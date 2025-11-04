@@ -9,20 +9,16 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, BookOpen, CheckCircle, AlertCircle, Heart, Users, Activity, Shield } from "lucide-react";
 import patternBackground from "@/assets/pattern-background.jpg";
-import kulakBarinImage from "@/assets/theme-kulak-barin.jpg";
-import tourniquetImage from "@/assets/theme-tourniquet.jpg";
-import airwayImage from "@/assets/theme-airway.jpg";
-import chestWoundImage from "@/assets/theme-chest-wound.jpg";
-import woundPackingImage from "@/assets/theme-wound-packing.jpg";
-import evacuationImage from "@/assets/theme-evacuation.jpg";
+import anatomyImage from "@/assets/theme-anatomy.png";
+import skeletonImage from "@/assets/theme-skeleton.jpg";
+import jointsImage from "@/assets/theme-joints.jpg";
+import musclesImage from "@/assets/theme-muscles.jpg";
 
 const themeImages: Record<number, string> = {
-  2: kulakBarinImage,
-  3: tourniquetImage,
-  4: airwayImage,
-  5: chestWoundImage,
-  6: woundPackingImage,
-  14: evacuationImage,
+  1: anatomyImage,
+  2: skeletonImage,
+  3: jointsImage,
+  4: musclesImage,
 };
 
 export default function ThemeDetail() {
