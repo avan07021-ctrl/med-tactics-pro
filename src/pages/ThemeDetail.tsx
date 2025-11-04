@@ -139,6 +139,15 @@ import traumaIvCatheter1 from "@/assets/trauma-iv-catheter-1.jpg";
 import traumaIvCatheter2 from "@/assets/trauma-iv-catheter-2.jpg";
 import traumaIoAccessPoints from "@/assets/trauma-io-access-points.jpg";
 import traumaIoMainPoints from "@/assets/trauma-io-main-points.jpg";
+import hypothermiaClassification from "@/assets/hypothermia-classification.jpg";
+import burnsDegrees from "@/assets/burns-degrees.jpg";
+import burnsFirstAid from "@/assets/burns-first-aid.jpg";
+import electricalInjuryMarks from "@/assets/electrical-injury-marks.jpg";
+import electricalLoops from "@/assets/electrical-loops.jpg";
+import precardialStrike1 from "@/assets/precardial-strike-1.jpg";
+import precardialStrike2 from "@/assets/precardial-strike-2.jpg";
+import precardialStrike3 from "@/assets/precardial-strike-3.jpg";
+import defibrillation from "@/assets/defibrillation.jpg";
 
 const themeImages: Record<number, string> = {
   1: anatomyImage,
@@ -1489,6 +1498,96 @@ export default function ThemeDetail() {
                                     <img src={traumaIoMainPoints} alt="Основные точки внутрикостного доступа" className="w-full h-auto rounded-lg" />
                                   </div>
                                 </div>
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </div>
+                      )}
+
+                      {theme.id === 10 && (
+                        <div className="mt-8 space-y-6">
+                          <h3 className="text-xl font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации к теме
+                          </h3>
+                          
+                          <div className="space-y-4">
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Классификация гипотермии</h4>
+                                <img src={hypothermiaClassification} alt="Классификация гипотермии по степени тяжести" className="w-full h-auto rounded-lg" />
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </div>
+                      )}
+
+                      {theme.id === 11 && (
+                        <div className="mt-8 space-y-6">
+                          <h3 className="text-xl font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации к теме
+                          </h3>
+                          
+                          <div className="space-y-4">
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Степени ожогов</h4>
+                                <img src={burnsDegrees} alt="Классификация ожогов по степени тяжести" className="w-full h-auto rounded-lg" />
+                                <p className="text-sm text-muted-foreground mt-2">I-IV степени ожогов</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Первая помощь при ожогах</h4>
+                                <img src={burnsFirstAid} alt="Алгоритм оказания первой помощи при ожогах" className="w-full h-auto rounded-lg" />
+                                <p className="text-sm text-muted-foreground mt-2">Алгоритм действий при термических ожогах</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Электротравма</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Знаки тока при электротравме</p>
+                                    <img src={electricalInjuryMarks} alt="Знаки тока на коже" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Электрические петли</p>
+                                    <img src={electricalLoops} alt="Виды электрических петель" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Прекардиальный удар</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Проверка пульса</p>
+                                    <img src={precardialStrike1} alt="Проверка пульса на сонной артерии" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Подъем ног</p>
+                                    <img src={precardialStrike2} alt="Подъем ног пострадавшего" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Техника удара</p>
+                                    <img src={precardialStrike3} alt="Техника прекардиального удара" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                                <p className="text-sm text-muted-foreground mt-2">При остановке сердца - нанести короткий резкий удар в точку на грудине</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Дефибрилляция</h4>
+                                <img src={defibrillation} alt="Методика проведения электрической дефибрилляции" className="w-full h-auto rounded-lg" />
+                                <p className="text-sm text-muted-foreground mt-2">Правильное размещение электродов дефибриллятора</p>
                               </CardContent>
                             </Card>
                           </div>
