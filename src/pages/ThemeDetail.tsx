@@ -41,6 +41,26 @@ import airwayIgel2 from "@/assets/airway-igel-2.jpg";
 import airwayCricothyrotomy1 from "@/assets/airway-cricothyrotomy-1.jpg";
 import airwayCricothyrotomy2 from "@/assets/airway-cricothyrotomy-2.jpg";
 import airwayCricothyrotomy3 from "@/assets/airway-cricothyrotomy-3.jpg";
+import cprCheckBreathing from "@/assets/cpr-check-breathing.jpg";
+import cprPrecardialPoint from "@/assets/cpr-precardial-point.jpg";
+import cprAlgorithm1 from "@/assets/cpr-algorithm-1.jpg";
+import cprAlgorithm2 from "@/assets/cpr-algorithm-2.jpg";
+import cprAlgorithm3 from "@/assets/cpr-algorithm-3.jpg";
+import cprAlgorithm4 from "@/assets/cpr-algorithm-4.jpg";
+import cprHandPosition from "@/assets/cpr-hand-position.jpg";
+import cprSafarManeuver from "@/assets/cpr-safar-maneuver.jpg";
+import cprBreathControl from "@/assets/cpr-breath-control.jpg";
+import cprEffectivenessCheck from "@/assets/cpr-effectiveness-check.jpg";
+import cprRecoveryPosition from "@/assets/cpr-recovery-position.jpg";
+import cprTeamPosition from "@/assets/cpr-team-position.jpg";
+import cprTeamIvl from "@/assets/cpr-team-ivl.jpg";
+import cprAmbuBag1 from "@/assets/cpr-ambu-bag-1.jpg";
+import cprAmbuBag2 from "@/assets/cpr-ambu-bag-2.jpg";
+import cprAed1 from "@/assets/cpr-aed-1.jpg";
+import cprAed2 from "@/assets/cpr-aed-2.jpg";
+import cprAedUse from "@/assets/cpr-aed-use.jpg";
+import cprAutopulse from "@/assets/cpr-autopulse.jpg";
+import cprAssistantDevices from "@/assets/cpr-assistant-devices.jpg";
 
 const themeImages: Record<number, string> = {
   1: anatomyImage,
@@ -605,6 +625,213 @@ export default function ThemeDetail() {
                                     className="w-full h-auto rounded-lg"
                                   />
                                 </div>
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </div>
+                      )}
+
+                      {theme.id === 5 && (
+                        <div className="mt-8 space-y-6">
+                          <h3 className="text-xl font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации к теме
+                          </h3>
+                          
+                          <div className="space-y-4">
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Проверка дыхания и пульса</h4>
+                                <img
+                                  src={cprCheckBreathing}
+                                  alt="Проверка дыхания и пульса"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Точка прекардиального удара</h4>
+                                <img
+                                  src={cprPrecardialPoint}
+                                  alt="Точка прекардиального удара"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Алгоритм СЛР</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={cprAlgorithm1}
+                                    alt="Алгоритм СЛР - этап 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={cprAlgorithm2}
+                                    alt="Алгоритм СЛР - этап 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={cprAlgorithm3}
+                                    alt="Алгоритм СЛР - этап 3"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={cprAlgorithm4}
+                                    alt="Алгоритм СЛР - этап 4"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Положение рук и точка СЛР</h4>
+                                <img
+                                  src={cprHandPosition}
+                                  alt="Положение рук и точка СЛР"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Прием Сафара (обеспечение проходимости дыхательных путей)</h4>
+                                <img
+                                  src={cprSafarManeuver}
+                                  alt="Прием Сафара"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Контроль движения грудной клетки при ИВЛ</h4>
+                                <img
+                                  src={cprBreathControl}
+                                  alt="Контроль движения грудной клетки"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Контроль эффективности реанимации</h4>
+                                <img
+                                  src={cprEffectivenessCheck}
+                                  alt="Контроль эффективности"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Восстановительное положение</h4>
+                                <img
+                                  src={cprRecoveryPosition}
+                                  alt="Восстановительное положение"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Расположение команды при СЛР</h4>
+                                <img
+                                  src={cprTeamPosition}
+                                  alt="Расположение команды"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Расположение команды при ИВЛ</h4>
+                                <img
+                                  src={cprTeamIvl}
+                                  alt="Расположение команды при ИВЛ"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Применение дыхательного мешка АМБУ</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={cprAmbuBag1}
+                                    alt="Дыхательный мешок АМБУ - вариант 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={cprAmbuBag2}
+                                    alt="Дыхательный мешок АМБУ - вариант 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Автоматический наружный дефибриллятор (АНД)</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={cprAed1}
+                                    alt="АНД - наложение электродов"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={cprAed2}
+                                    alt="АНД - подключение"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Использование АНД</h4>
+                                <img
+                                  src={cprAedUse}
+                                  alt="Использование АНД"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Аппарат автоматической СЛР - AutoPulse</h4>
+                                <img
+                                  src={cprAutopulse}
+                                  alt="AutoPulse"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Ассистенты СЛР (контроль эффективности)</h4>
+                                <img
+                                  src={cprAssistantDevices}
+                                  alt="Ассистенты СЛР"
+                                  className="w-full h-auto rounded-lg"
+                                />
                               </CardContent>
                             </Card>
                           </div>
