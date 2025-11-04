@@ -128,13 +128,55 @@ export default function Tests() {
     }
   };
 
-  const submitTest = () => {
+  const submitTest = async () => {
+    if (!user) return;
+
     let correct = 0;
     questions.forEach((q, index) => {
       if (answers[index] === q.correct_answer) {
         correct++;
       }
     });
+    
+    const percentage = Math.round((correct / questions.length) * 100);
+    const passed = percentage >= 70; // Порог прохождения теста
+
+    // Сохранение результата в базу данных
+    try {
+      const { error } = await supabase
+        .from("test_results")
+        .insert({
+          user_id: user.id,
+          theme_id: selectedTheme,
+          score: correct,
+          total_questions: questions.length,
+          percentage: percentage,
+          passed: passed,
+          time_spent: 0, // Можно добавить отслеживание времени
+        });
+
+      if (error) {
+        console.error("Error saving test result:", error);
+        toast({
+          variant: "destructive",
+          title: "Ошибка",
+          description: "Не удалось сохранить результаты теста",
+        });
+      } else {
+        toast({
+          title: passed ? "Тест пройден!" : "Тест не пройден",
+          description: `Вы набрали ${percentage}% правильных ответов`,
+        });
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      toast({
+        variant: "destructive",
+        title: "Ошибка",
+        description: "Произошла ошибка при сохранении результатов",
+      });
+    }
+
     setScore(correct);
     setShowResults(true);
   };
