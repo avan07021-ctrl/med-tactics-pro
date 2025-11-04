@@ -19,13 +19,26 @@ export default function Auth() {
   const [fullName, setFullName] = useState("");
 
   useEffect(() => {
-    const checkUser = async () => {
+    // Проверка текущей сессии
+    const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        navigate("/themes");
+        navigate("/");
       }
     };
-    checkUser();
+
+    checkSession();
+
+    // Подписка на изменения auth state
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (session) {
+          navigate("/");
+        }
+      }
+    );
+
+    return () => subscription.unsubscribe();
   }, [navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -43,10 +56,14 @@ export default function Auth() {
         title: "Ошибка входа",
         description: error.message,
       });
+      setLoading(false);
     } else {
-      navigate("/themes");
+      toast({
+        title: "Успешный вход",
+        description: "Добро пожаловать!",
+      });
+      // Редирект произойдет через onAuthStateChange
     }
-    setLoading(false);
   };
 
   const handleSignup = async (e: React.FormEvent) => {
@@ -70,14 +87,14 @@ export default function Auth() {
         title: "Ошибка регистрации",
         description: error.message,
       });
+      setLoading(false);
     } else {
       toast({
         title: "Регистрация успешна",
-        description: "Вы можете войти в систему",
+        description: "Вы успешно зарегистрированы!",
       });
-      navigate("/themes");
+      // Редирект произойдет через onAuthStateChange
     }
-    setLoading(false);
   };
 
   return (
