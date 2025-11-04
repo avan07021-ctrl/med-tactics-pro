@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Plus, Pencil, Trash2, Upload, Search } from "lucide-react";
 import { QuestionForm } from "@/components/QuestionForm";
 import { MediaUpload } from "@/components/MediaUpload";
+import { UploadKulakBarinMedia } from "@/components/UploadKulakBarinMedia";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import testData from "@/data/test_base.json";
@@ -426,7 +427,10 @@ export default function Admin() {
           </TabsContent>
 
           <TabsContent value="media">
-            <MediaUpload themes={themes} />
+            <div className="space-y-6">
+              <UploadKulakBarinMedia />
+              <MediaUpload themes={themes} />
+            </div>
           </TabsContent>
         </Tabs>
       </div>
