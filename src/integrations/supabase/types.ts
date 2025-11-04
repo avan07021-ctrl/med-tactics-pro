@@ -148,6 +148,50 @@ export type Database = {
           },
         ]
       }
+      theme_media: {
+        Row: {
+          created_at: string
+          file_name: string
+          file_path: string
+          file_size: number | null
+          file_type: string
+          id: string
+          media_type: string
+          theme_id: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          file_name: string
+          file_path: string
+          file_size?: number | null
+          file_type: string
+          id?: string
+          media_type: string
+          theme_id: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          file_name?: string
+          file_path?: string
+          file_size?: number | null
+          file_type?: string
+          id?: string
+          media_type?: string
+          theme_id?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "theme_media_theme_id_fkey"
+            columns: ["theme_id"]
+            isOneToOne: false
+            referencedRelation: "themes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       themes: {
         Row: {
           content: string | null

@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { Plus, Pencil, Trash2, Upload, Search } from "lucide-react";
 import { QuestionForm } from "@/components/QuestionForm";
+import { MediaUpload } from "@/components/MediaUpload";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import testData from "@/data/test_base.json";
@@ -301,9 +302,10 @@ export default function Admin() {
         </div>
 
         <Tabs defaultValue="questions">
-          <TabsList className="grid w-full grid-cols-2 mb-8">
+          <TabsList className="grid w-full grid-cols-3 mb-8">
             <TabsTrigger value="questions">Вопросы ({questions.length})</TabsTrigger>
             <TabsTrigger value="themes">Темы ({themes.length})</TabsTrigger>
+            <TabsTrigger value="media">Медиа</TabsTrigger>
           </TabsList>
 
           <TabsContent value="questions" className="space-y-6">
@@ -421,6 +423,10 @@ export default function Admin() {
                 </Card>
               ))}
             </div>
+          </TabsContent>
+
+          <TabsContent value="media">
+            <MediaUpload themes={themes} />
           </TabsContent>
         </Tabs>
       </div>
