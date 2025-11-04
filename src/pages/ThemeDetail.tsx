@@ -124,6 +124,21 @@ import transportVehicle1 from "@/assets/transport-vehicle-1.jpg";
 import transportVehicle2 from "@/assets/transport-vehicle-2.jpg";
 import transportVehicle3 from "@/assets/transport-vehicle-3.jpg";
 import transportVehicle4 from "@/assets/transport-vehicle-4.jpg";
+import traumaBrokenRibs from "@/assets/trauma-broken-ribs.jpg";
+import traumaFlailChest1 from "@/assets/trauma-flail-chest-1.jpg";
+import traumaFlailChest2 from "@/assets/trauma-flail-chest-2.jpg";
+import traumaChestBandageTechnique from "@/assets/trauma-chest-bandage-technique.jpg";
+import traumaAmbuBag from "@/assets/trauma-ambu-bag.jpg";
+import traumaShockVolume from "@/assets/trauma-shock-volume.jpg";
+import traumaObstructiveShock from "@/assets/trauma-obstructive-shock.jpg";
+import traumaVesselCapacity from "@/assets/trauma-vessel-capacity.jpg";
+import traumaNoPulse from "@/assets/trauma-no-pulse.jpg";
+import traumaCapillaryRefill from "@/assets/trauma-capillary-refill.jpg";
+import traumaSyringeTube from "@/assets/trauma-syringe-tube.jpg";
+import traumaIvCatheter1 from "@/assets/trauma-iv-catheter-1.jpg";
+import traumaIvCatheter2 from "@/assets/trauma-iv-catheter-2.jpg";
+import traumaIoAccessPoints from "@/assets/trauma-io-access-points.jpg";
+import traumaIoMainPoints from "@/assets/trauma-io-main-points.jpg";
 
 const themeImages: Record<number, string> = {
   1: anatomyImage,
@@ -1358,6 +1373,121 @@ export default function ThemeDetail() {
                                   <img src={transportVehicle2} alt="Размещение в Toyota Hilux" className="w-full h-auto rounded-lg" />
                                   <img src={transportVehicle3} alt="Размещение в кузове КамАЗ" className="w-full h-auto rounded-lg" />
                                   <img src={transportVehicle4} alt="Погрузка раненого" className="w-full h-auto rounded-lg" />
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </div>
+                      )}
+
+                      {theme.id === 9 && (
+                        <div className="mt-8 space-y-6">
+                          <h3 className="text-xl font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации к теме
+                          </h3>
+                          
+                          <div className="space-y-4">
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Повреждения грудного каркаса</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Сломанные ребра</p>
+                                    <img src={traumaBrokenRibs} alt="Сломанные ребра" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Наложение тугой повязки</p>
+                                    <img src={traumaChestBandageTechnique} alt="Наложение тугой повязки" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Реберный клапан (флотация)</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img src={traumaFlailChest1} alt="Флотация грудной клетки - вдох" className="w-full h-auto rounded-lg" />
+                                  <img src={traumaFlailChest2} alt="Флотация грудной клетки - выдох" className="w-full h-auto rounded-lg" />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Виды шока</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Объем vs емкость</p>
+                                    <img src={traumaShockVolume} alt="Объем циркулирующей крови" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Обструктивный шок</p>
+                                    <img src={traumaObstructiveShock} alt="Обструктивный шок" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Емкость сосудов</p>
+                                    <img src={traumaVesselCapacity} alt="Емкость сосудистого русла" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Критерии шока</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Отсутствие пульса</p>
+                                    <img src={traumaNoPulse} alt="Отсутствие периферического пульса" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Капиллярное наполнение</p>
+                                    <img src={traumaCapillaryRefill} alt="Капиллярное наполнение" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Обезболивание и введение препаратов</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Мешок АМБУ</p>
+                                    <img src={traumaAmbuBag} alt="Мешок АМБУ" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Шприц-тюбик</p>
+                                    <img src={traumaSyringeTube} alt="Шприц-тюбик с промедолом" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Периферические венозные катетеры</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img src={traumaIvCatheter1} alt="Виды венозных катетеров" className="w-full h-auto rounded-lg" />
+                                  <img src={traumaIvCatheter2} alt="Цветовая маркировка катетеров" className="w-full h-auto rounded-lg" />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Внутрикостный доступ</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Все точки доступа</p>
+                                    <img src={traumaIoAccessPoints} alt="Семь точек внутрикостного доступа" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Основные точки</p>
+                                    <img src={traumaIoMainPoints} alt="Основные точки внутрикостного доступа" className="w-full h-auto rounded-lg" />
+                                  </div>
                                 </div>
                               </CardContent>
                             </Card>
