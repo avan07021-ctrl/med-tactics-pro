@@ -84,6 +84,36 @@ import chestFlail3 from "@/assets/chest-flail-3.jpg";
 import chestBandage1 from "@/assets/chest-bandage-1.jpg";
 import chestBandage2 from "@/assets/chest-bandage-2.jpg";
 import chestBandage3 from "@/assets/chest-bandage-3.jpg";
+import desmurgyMaterials1 from "@/assets/desmurgy-materials-1.jpg";
+import desmurgyMaterials2 from "@/assets/desmurgy-materials-2.jpg";
+import desmurgyMaterials3 from "@/assets/desmurgy-materials-3.jpg";
+import desmurgyTechnique1 from "@/assets/desmurgy-technique-1.jpg";
+import desmurgyTechnique2 from "@/assets/desmurgy-technique-2.jpg";
+import desmurgyNeck1 from "@/assets/desmurgy-neck-1.jpg";
+import desmurgyNeck2 from "@/assets/desmurgy-neck-2.jpg";
+import desmurgyNeck3 from "@/assets/desmurgy-neck-3.jpg";
+import desmurgyNeck4 from "@/assets/desmurgy-neck-4.jpg";
+import desmurgyNeck5 from "@/assets/desmurgy-neck-5.jpg";
+import desmurgyNeck6 from "@/assets/desmurgy-neck-6.jpg";
+import desmurgyNeck7 from "@/assets/desmurgy-neck-7.jpg";
+import desmurgyNeck8 from "@/assets/desmurgy-neck-8.jpg";
+import desmurgyNeck9 from "@/assets/desmurgy-neck-9.jpg";
+import desmurgyNeck10 from "@/assets/desmurgy-neck-10.jpg";
+import desmurgyHead1 from "@/assets/desmurgy-head-1.jpg";
+import desmurgyHead2 from "@/assets/desmurgy-head-2.jpg";
+import desmurgyHead3 from "@/assets/desmurgy-head-3.jpg";
+import desmurgyHead4 from "@/assets/desmurgy-head-4.jpg";
+import desmurgyHead5 from "@/assets/desmurgy-head-5.jpg";
+import desmurgyHead6 from "@/assets/desmurgy-head-6.jpg";
+import desmurgyStump1 from "@/assets/desmurgy-stump-1.jpg";
+import desmurgyStump2 from "@/assets/desmurgy-stump-2.jpg";
+import desmurgyStump3 from "@/assets/desmurgy-stump-3.jpg";
+import desmurgyShoulder1 from "@/assets/desmurgy-shoulder-1.jpg";
+import desmurgyShoulder2 from "@/assets/desmurgy-shoulder-2.jpg";
+import desmurgyShoulder3 from "@/assets/desmurgy-shoulder-3.jpg";
+import desmurgyAxilla1 from "@/assets/desmurgy-axilla-1.jpg";
+import desmurgyAxilla2 from "@/assets/desmurgy-axilla-2.jpg";
+import desmurgyAxilla3 from "@/assets/desmurgy-axilla-3.jpg";
 
 const themeImages: Record<number, string> = {
   1: anatomyImage,
@@ -1048,6 +1078,223 @@ export default function ThemeDetail() {
                                   <img
                                     src={chestBandage3}
                                     alt="Тугая повязка - этап 3"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </div>
+                      )}
+
+                      {theme.id === 7 && (
+                        <div className="mt-8 space-y-6">
+                          <h3 className="text-xl font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации к теме
+                          </h3>
+                          
+                          <div className="space-y-4">
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Перевязочные материалы</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <img
+                                    src={desmurgyMaterials1}
+                                    alt="Перевязочные материалы - бинты"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyMaterials2}
+                                    alt="Перевязочный пакет"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyMaterials3}
+                                    alt="Подручные средства"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Техника наложения повязок</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={desmurgyTechnique1}
+                                    alt="Правильное натяжение бинта"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyTechnique2}
+                                    alt="Закрепление повязки"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Бандаж на рану шеи (пошаговый алгоритм)</h4>
+                                <div className="grid md:grid-cols-5 gap-2">
+                                  <img
+                                    src={desmurgyNeck1}
+                                    alt="Бандаж на шею - этап 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyNeck2}
+                                    alt="Бандаж на шею - этап 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyNeck3}
+                                    alt="Бандаж на шею - этап 3"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyNeck4}
+                                    alt="Бандаж на шею - этап 4"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyNeck5}
+                                    alt="Бандаж на шею - этап 5"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyNeck6}
+                                    alt="Бандаж на шею - этап 6"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyNeck7}
+                                    alt="Бандаж на шею - этап 7"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyNeck8}
+                                    alt="Бандаж на шею - этап 8"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyNeck9}
+                                    alt="Бандаж на шею - этап 9"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyNeck10}
+                                    alt="Бандаж на шею - этап 10"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Бандаж на голове (алгоритм)</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <img
+                                    src={desmurgyHead1}
+                                    alt="Бандаж на голову - этап 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyHead2}
+                                    alt="Бандаж на голову - этап 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyHead3}
+                                    alt="Бандаж на голову - этап 3"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyHead4}
+                                    alt="Бандаж на голову - этап 4"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyHead5}
+                                    alt="Бандаж на голову - этап 5"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyHead6}
+                                    alt="Бандаж на голову - этап 6"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Бандаж на культе конечности</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <img
+                                    src={desmurgyStump1}
+                                    alt="Бандаж на культю - этап 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyStump2}
+                                    alt="Бандаж на культю - этап 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyStump3}
+                                    alt="Бандаж на культю - этап 3"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Бандаж на плече</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <img
+                                    src={desmurgyShoulder1}
+                                    alt="Бандаж на плечо - этап 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyShoulder2}
+                                    alt="Бандаж на плечо - этап 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyShoulder3}
+                                    alt="Бандаж на плечо - этап 3"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Бандаж в области подмышечной впадины</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <img
+                                    src={desmurgyAxilla1}
+                                    alt="Бандаж подмышечной впадины - этап 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyAxilla2}
+                                    alt="Бандаж подмышечной впадины - этап 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={desmurgyAxilla3}
+                                    alt="Бандаж подмышечной впадины - этап 3"
                                     className="w-full h-auto rounded-lg"
                                   />
                                 </div>
