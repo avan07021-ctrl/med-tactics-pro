@@ -1,0 +1,277 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { Layout } from "@/components/Layout";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import { ClipboardCheck, Info } from "lucide-react";
+
+export default function Tests() {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [user, setUser] = useState<any>(null);
+  const [profile, setProfile] = useState<any>(null);
+  const [themes, setThemes] = useState<any[]>([]);
+  const [selectedTheme, setSelectedTheme] = useState<number | null>(null);
+  const [questions, setQuestions] = useState<any[]>([]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState<{ [key: number]: string }>({});
+  const [showResults, setShowResults] = useState(false);
+  const [score, setScore] = useState(0);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        navigate("/auth");
+        return;
+      }
+      setUser(session.user);
+
+      const { data: profileData } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", session.user.id)
+        .single();
+      
+      setProfile(profileData);
+    };
+
+    const fetchThemes = async () => {
+      const { data } = await supabase
+        .from("themes")
+        .select("*")
+        .order("order_index", { ascending: true });
+
+      if (data) {
+        setThemes(data);
+      }
+    };
+
+    checkAuth();
+    fetchThemes();
+  }, [navigate]);
+
+  const startTest = async (themeId: number) => {
+    const { data } = await supabase
+      .from("test_questions")
+      .select("*")
+      .eq("theme_id", themeId);
+
+    if (data && data.length > 0) {
+      setQuestions(data);
+      setSelectedTheme(themeId);
+      setCurrentQuestion(0);
+      setAnswers({});
+      setShowResults(false);
+    } else {
+      toast({
+        title: "Нет вопросов",
+        description: "Для этой темы пока нет тестовых вопросов",
+      });
+    }
+  };
+
+  const handleAnswer = (answer: string) => {
+    setAnswers({ ...answers, [currentQuestion]: answer });
+  };
+
+  const nextQuestion = () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+  };
+
+  const previousQuestion = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+
+  const submitTest = () => {
+    let correct = 0;
+    questions.forEach((q, index) => {
+      if (answers[index] === q.correct_answer) {
+        correct++;
+      }
+    });
+    setScore(correct);
+    setShowResults(true);
+  };
+
+  const resetTest = () => {
+    setSelectedTheme(null);
+    setQuestions([]);
+    setCurrentQuestion(0);
+    setAnswers({});
+    setShowResults(false);
+    setScore(0);
+  };
+
+  if (!selectedTheme) {
+    return (
+      <Layout user={user} isAdmin={profile?.role === "admin"}>
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold mb-2">Тестирование</h1>
+            <p className="text-muted-foreground">
+              Выберите тему для прохождения теста
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {themes.map((theme, index) => (
+              <Card key={theme.id} className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <Badge variant="outline" className="w-fit mb-2">
+                    Тема {index + 1}
+                  </Badge>
+                  <CardTitle className="text-xl">{theme.name}</CardTitle>
+                  <CardDescription>
+                    {theme.description || "Тестирование по данной теме"}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button onClick={() => startTest(theme.id)} className="w-full">
+                    Начать тест
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (showResults) {
+    const percentage = Math.round((score / questions.length) * 100);
+    return (
+      <Layout user={user} isAdmin={profile?.role === "admin"}>
+        <div className="max-w-2xl mx-auto">
+          <Card>
+            <CardHeader className="text-center">
+              <ClipboardCheck className="h-16 w-16 text-primary mx-auto mb-4" />
+              <CardTitle className="text-2xl">Результаты теста</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center space-y-6">
+              <div>
+                <div className="text-6xl font-bold text-primary mb-2">
+                  {percentage}%
+                </div>
+                <p className="text-lg text-muted-foreground">
+                  Правильных ответов: {score} из {questions.length}
+                </p>
+              </div>
+              
+              <div className="space-y-2">
+                {questions.map((q, index) => (
+                  <div
+                    key={q.id}
+                    className={`p-3 rounded-lg text-left ${
+                      answers[index] === q.correct_answer
+                        ? "bg-green-100 dark:bg-green-900"
+                        : "bg-red-100 dark:bg-red-900"
+                    }`}
+                  >
+                    <p className="font-medium text-sm mb-1">{q.question}</p>
+                    <p className="text-xs">
+                      Ваш ответ: <strong>{answers[index] || "Не отвечено"}</strong>
+                      {answers[index] !== q.correct_answer && (
+                        <> • Правильный: <strong>{q.correct_answer}</strong></>
+                      )}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <Button onClick={resetTest} className="w-full">
+                Вернуться к выбору темы
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </Layout>
+    );
+  }
+
+  const question = questions[currentQuestion];
+
+  return (
+    <Layout user={user} isAdmin={profile?.role === "admin"}>
+      <div className="max-w-3xl mx-auto">
+        <Card>
+          <CardHeader>
+            <div className="flex items-center justify-between mb-4">
+              <Badge>
+                Вопрос {currentQuestion + 1} из {questions.length}
+              </Badge>
+              <Button variant="ghost" size="sm" onClick={resetTest}>
+                Выйти из теста
+              </Button>
+            </div>
+            <CardTitle className="text-xl">{question.question}</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <RadioGroup
+              value={answers[currentQuestion] || ""}
+              onValueChange={handleAnswer}
+            >
+              <div className="space-y-3">
+                {["A", "B", "C", "D"].map((option) => (
+                  <div
+                    key={option}
+                    className="flex items-center space-x-2 p-4 rounded-lg border hover:bg-accent transition-colors"
+                  >
+                    <RadioGroupItem value={option} id={option} />
+                    <Label htmlFor={option} className="flex-1 cursor-pointer">
+                      <strong>{option}:</strong> {question[`option_${option.toLowerCase()}`]}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            </RadioGroup>
+
+            {question.hint && (
+              <div className="flex gap-2 p-4 rounded-lg bg-muted">
+                <Info className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium text-sm mb-1">Подсказка:</p>
+                  <p className="text-sm text-muted-foreground">{question.hint}</p>
+                </div>
+              </div>
+            )}
+
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                onClick={previousQuestion}
+                disabled={currentQuestion === 0}
+                className="flex-1"
+              >
+                Назад
+              </Button>
+              {currentQuestion === questions.length - 1 ? (
+                <Button
+                  onClick={submitTest}
+                  disabled={Object.keys(answers).length !== questions.length}
+                  className="flex-1"
+                >
+                  Завершить тест
+                </Button>
+              ) : (
+                <Button onClick={nextQuestion} className="flex-1">
+                  Далее
+                </Button>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </Layout>
+  );
+}
