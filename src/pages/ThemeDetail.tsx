@@ -287,88 +287,197 @@ export default function ThemeDetail() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Users className="h-5 w-5" />
-                    Практические упражнения
+                    {theme.id === 18 ? "Практические навыки изучения анатомии" : "Практические упражнения"}
                   </CardTitle>
                   <CardDescription>
-                    Отработка навыков на практике в условиях, приближенных к боевым
+                    {theme.id === 18 
+                      ? "Отработка навыков идентификации и понимания строения человеческого тела"
+                      : "Отработка навыков на практике в условиях, приближенных к боевым"
+                    }
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="p-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary">
-                    <div className="flex items-start gap-3">
-                      <div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
-                        1
+                  {theme.id === 18 ? (
+                    <>
+                      <div className="p-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary">
+                        <div className="flex items-start gap-3">
+                          <div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                            1
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Изучение опорно-двигательного аппарата</h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Освоение знаний о строении скелета и классификации костей
+                            </p>
+                            <ul className="text-sm space-y-1 ml-4 list-disc">
+                              <li>Идентификация типов костей: трубчатые, губчатые, плоские, смешанные</li>
+                              <li>Определение основных костей скелета на схемах и макетах</li>
+                              <li>Изучение строения трубчатых костей (эпифиз, диафиз, метафиз)</li>
+                              <li>Понимание функций красного костного мозга в кроветворении</li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold mb-2">Алгоритм действий</h4>
-                        <p className="text-sm text-muted-foreground mb-2">
-                          Отработайте последовательность действий согласно изученному протоколу
-                        </p>
-                        <ul className="text-sm space-y-1 ml-4 list-disc">
-                          <li>Оценка обстановки и угроз</li>
-                          <li>Выполнение алгоритма по шагам</li>
-                          <li>Контроль критических параметров</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div className="p-4 bg-gradient-to-r from-blue-500/10 to-blue-500/5 rounded-lg border-l-4 border-blue-500">
-                    <div className="flex items-start gap-3">
-                      <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
-                        2
+                      <div className="p-4 bg-gradient-to-r from-blue-500/10 to-blue-500/5 rounded-lg border-l-4 border-blue-500">
+                        <div className="flex items-start gap-3">
+                          <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                            2
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Система кровообращения</h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Понимание строения сердечно-сосудистой системы и гемодинамики
+                            </p>
+                            <ul className="text-sm space-y-1 ml-4 list-disc">
+                              <li>Различение малого и большого кругов кровообращения</li>
+                              <li>Понимание систолы и диастолы, нормы АД (110-120/70-80 мм рт.ст.)</li>
+                              <li>Изучение состава крови: плазма (55%) и форменные элементы (45%)</li>
+                              <li>Определение групп крови по системе AB0 и резус-фактору</li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold mb-2">Работа с оборудованием</h4>
-                        <p className="text-sm text-muted-foreground mb-2">
-                          Практическое применение табельных средств первой помощи
-                        </p>
-                        <ul className="text-sm space-y-1 ml-4 list-disc">
-                          <li>Наложение жгута в различных условиях</li>
-                          <li>Использование гемостатиков и повязок</li>
-                          <li>Работа с дыхательными путями</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div className="p-4 bg-gradient-to-r from-amber-500/10 to-amber-500/5 rounded-lg border-l-4 border-amber-500">
-                    <div className="flex items-start gap-3">
-                      <div className="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
-                        3
+                      <div className="p-4 bg-gradient-to-r from-amber-500/10 to-amber-500/5 rounded-lg border-l-4 border-amber-500">
+                        <div className="flex items-start gap-3">
+                          <div className="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                            3
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Дыхательная система</h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Изучение органов дыхания и процесса газообмена
+                            </p>
+                            <ul className="text-sm space-y-1 ml-4 list-disc">
+                              <li>Понимание строения: носовая полость → гортань → трахея → бронхи → легкие</li>
+                              <li>Механизм газообмена через альвеолы (О₂ и СО₂)</li>
+                              <li>Роль гемоглобина в транспорте кислорода (1 г = 1,36 мл О₂)</li>
+                              <li>Локализация грудной полости и плевральных полостей</li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold mb-2">Работа в условиях стресса</h4>
-                        <p className="text-sm text-muted-foreground mb-2">
-                          Отработка навыков в условиях, приближенных к реальным боевым действиям
-                        </p>
-                        <ul className="text-sm space-y-1 ml-4 list-disc">
-                          <li>Выполнение действий под давлением времени</li>
-                          <li>Работа при ограниченной видимости</li>
-                          <li>Взаимодействие в составе группы</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div className="p-4 bg-gradient-to-r from-green-500/10 to-green-500/5 rounded-lg border-l-4 border-green-500">
-                    <div className="flex items-start gap-3">
-                      <div className="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
-                        4
+                      <div className="p-4 bg-gradient-to-r from-green-500/10 to-green-500/5 rounded-lg border-l-4 border-green-500">
+                        <div className="flex items-start gap-3">
+                          <div className="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                            4
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Полости тела и органы</h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Топографическая анатомия и расположение внутренних органов
+                            </p>
+                            <ul className="text-sm space-y-1 ml-4 list-disc">
+                              <li>Грудная полость: сердце, легкие, средостение</li>
+                              <li>Брюшная полость: органы пищеварения, брюшина</li>
+                              <li>Выделительная система: почки, мочеточники, мочевой пузырь</li>
+                              <li>ЦНС: головной и спинной мозг, соматическая и вегетативная НС</li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold mb-2">Комплексная отработка</h4>
-                        <p className="text-sm text-muted-foreground mb-2">
-                          Отработка всех элементов темы в комплексе
-                        </p>
-                        <ul className="text-sm space-y-1 ml-4 list-disc">
-                          <li>Сценарные учения с ролевым распределением</li>
-                          <li>Работа с несколькими пострадавшими</li>
-                          <li>Анализ и работа над ошибками</li>
-                        </ul>
+
+                      <div className="p-4 bg-gradient-to-r from-purple-500/10 to-purple-500/5 rounded-lg border-l-4 border-purple-500">
+                        <div className="flex items-start gap-3">
+                          <div className="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                            5
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Применение знаний на практике</h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Связь анатомических знаний с оказанием первой помощи
+                            </p>
+                            <ul className="text-sm space-y-1 ml-4 list-disc">
+                              <li>Понимание логики процессов при ранениях разных областей</li>
+                              <li>Знание расположения крупных сосудов для остановки кровотечений</li>
+                              <li>Ориентация в топографии для внутрикостных инфузий</li>
+                              <li>Понимание функциональной анатомии для квалифицированной помощи</li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="p-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary">
+                        <div className="flex items-start gap-3">
+                          <div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                            1
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Алгоритм действий</h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Отработайте последовательность действий согласно изученному протоколу
+                            </p>
+                            <ul className="text-sm space-y-1 ml-4 list-disc">
+                              <li>Оценка обстановки и угроз</li>
+                              <li>Выполнение алгоритма по шагам</li>
+                              <li>Контроль критических параметров</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-gradient-to-r from-blue-500/10 to-blue-500/5 rounded-lg border-l-4 border-blue-500">
+                        <div className="flex items-start gap-3">
+                          <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                            2
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Работа с оборудованием</h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Практическое применение табельных средств первой помощи
+                            </p>
+                            <ul className="text-sm space-y-1 ml-4 list-disc">
+                              <li>Наложение жгута в различных условиях</li>
+                              <li>Использование гемостатиков и повязок</li>
+                              <li>Работа с дыхательными путями</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-gradient-to-r from-amber-500/10 to-amber-500/5 rounded-lg border-l-4 border-amber-500">
+                        <div className="flex items-start gap-3">
+                          <div className="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                            3
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Работа в условиях стресса</h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Отработка навыков в условиях, приближенных к реальным боевым действиям
+                            </p>
+                            <ul className="text-sm space-y-1 ml-4 list-disc">
+                              <li>Выполнение действий под давлением времени</li>
+                              <li>Работа при ограниченной видимости</li>
+                              <li>Взаимодействие в составе группы</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-gradient-to-r from-green-500/10 to-green-500/5 rounded-lg border-l-4 border-green-500">
+                        <div className="flex items-start gap-3">
+                          <div className="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                            4
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Комплексная отработка</h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Отработка всех элементов темы в комплексе
+                            </p>
+                            <ul className="text-sm space-y-1 ml-4 list-disc">
+                              <li>Сценарные учения с ролевым распределением</li>
+                              <li>Работа с несколькими пострадавшими</li>
+                              <li>Анализ и работа над ошибками</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </CardContent>
               </Card>
             </TabsContent>
