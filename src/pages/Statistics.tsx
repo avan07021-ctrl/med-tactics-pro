@@ -54,17 +54,37 @@ export default function Statistics() {
         .from("profiles")
         .select("*")
         .eq("id", userId)
-        .single();
+        .maybeSingle();
 
-      if (!profileData) {
-        navigate("/auth");
+      let profileRow = profileData;
+      if (!profileRow) {
+        const { data: userRes } = await supabase.auth.getUser();
+        const authUser = userRes?.user;
+        if (authUser?.id === userId) {
+          const { data: inserted } = await supabase
+            .from("profiles")
+            .insert({
+              id: authUser.id,
+              email: authUser.email!,
+              full_name: (authUser.user_metadata as any)?.full_name || "",
+            })
+            .select("*")
+            .single();
+          profileRow = inserted || null;
+        }
+      }
+
+      if (!profileRow) {
+        setProfile(null);
+        setIsAdmin(false);
+        await fetchUserData(userId);
         return;
       }
 
-      setProfile(profileData);
-      setIsAdmin(profileData.role === "admin");
+      setProfile(profileRow);
+      setIsAdmin(profileRow.role === "admin");
 
-      if (profileData.role === "admin") {
+      if (profileRow.role === "admin") {
         await fetchAllUsersData();
       } else {
         await fetchUserData(userId);
