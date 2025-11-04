@@ -35,7 +35,7 @@ export const Layout = ({ children, user, isAdmin }: LayoutProps) => {
       <header className="border-b bg-card shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-3 hover-scale">
+            <Link to={user ? "/themes" : "/"} className="flex items-center gap-3 hover-scale">
               <img src={avangardLogo} alt="Авангард" className="h-12 w-12 object-contain" />
               <div>
                 <h1 className="text-xl font-bold text-foreground">Тактическая Медицина</h1>
