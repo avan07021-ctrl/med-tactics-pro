@@ -7,8 +7,23 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, BookOpen, CheckCircle, AlertCircle } from "lucide-react";
+import { ArrowLeft, BookOpen, CheckCircle, AlertCircle, Heart, Users, Activity, Shield } from "lucide-react";
 import patternBackground from "@/assets/pattern-background.jpg";
+import kulakBarinImage from "@/assets/theme-kulak-barin.jpg";
+import tourniquetImage from "@/assets/theme-tourniquet.jpg";
+import airwayImage from "@/assets/theme-airway.jpg";
+import chestWoundImage from "@/assets/theme-chest-wound.jpg";
+import woundPackingImage from "@/assets/theme-wound-packing.jpg";
+import evacuationImage from "@/assets/theme-evacuation.jpg";
+
+const themeImages: Record<number, string> = {
+  2: kulakBarinImage,
+  3: tourniquetImage,
+  4: airwayImage,
+  5: chestWoundImage,
+  6: woundPackingImage,
+  14: evacuationImage,
+};
 
 export default function ThemeDetail() {
   const { id } = useParams();
@@ -139,6 +154,16 @@ export default function ThemeDetail() {
             </TabsList>
 
             <TabsContent value="content" className="space-y-4">
+              {themeImages[theme.id] && (
+                <Card className="overflow-hidden">
+                  <img 
+                    src={themeImages[theme.id]} 
+                    alt={theme.name}
+                    className="w-full h-auto object-cover"
+                  />
+                </Card>
+              )}
+
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -148,8 +173,8 @@ export default function ThemeDetail() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {theme.content ? (
-                    <div className="prose prose-sm max-w-none">
-                      <p className="whitespace-pre-wrap">{theme.content}</p>
+                    <div className="prose prose-sm max-w-none dark:prose-invert">
+                      <div className="whitespace-pre-wrap leading-relaxed">{theme.content}</div>
                     </div>
                   ) : (
                     <p className="text-muted-foreground">
@@ -164,20 +189,20 @@ export default function ThemeDetail() {
                   <CardTitle>Ключевые моменты</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Accordion type="single" collapsible>
+                  <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="item-1">
                       <AccordionTrigger>
                         <div className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-500" />
-                          Что необходимо знать
+                          <Heart className="h-4 w-4 text-red-500" />
+                          Основные принципы
                         </div>
                       </AccordionTrigger>
                       <AccordionContent>
                         <ul className="list-disc list-inside space-y-2 text-sm">
-                          <li>Основные принципы и алгоритмы</li>
-                          <li>Показания и противопоказания</li>
-                          <li>Последовательность действий</li>
-                          <li>Критические ошибки</li>
+                          <li>Безопасность оказывающего помощь - приоритет №1</li>
+                          <li>Следование установленным алгоритмам действий</li>
+                          <li>Оценка тактической обстановки перед вмешательством</li>
+                          <li>Контроль критических параметров: кровотечение, дыхание</li>
                         </ul>
                       </AccordionContent>
                     </AccordionItem>
@@ -185,16 +210,50 @@ export default function ThemeDetail() {
                     <AccordionItem value="item-2">
                       <AccordionTrigger>
                         <div className="flex items-center gap-2">
-                          <AlertCircle className="h-4 w-4 text-primary" />
+                          <Activity className="h-4 w-4 text-blue-500" />
+                          Последовательность действий
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <ul className="list-disc list-inside space-y-2 text-sm">
+                          <li>Первичная оценка обстановки и угроз</li>
+                          <li>Остановка критического кровотечения</li>
+                          <li>Обеспечение проходимости дыхательных путей</li>
+                          <li>Регулярная переоценка состояния пострадавшего</li>
+                        </ul>
+                      </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="item-3">
+                      <AccordionTrigger>
+                        <div className="flex items-center gap-2">
+                          <AlertCircle className="h-4 w-4 text-amber-500" />
                           Важные предостережения
                         </div>
                       </AccordionTrigger>
                       <AccordionContent>
                         <ul className="list-disc list-inside space-y-2 text-sm">
-                          <li>Безопасность оказывающего помощь - приоритет №1</li>
-                          <li>Оценка тактической обстановки перед действиями</li>
-                          <li>Контроль времени при наложении жгута</li>
-                          <li>Регулярная переоценка состояния пострадавшего</li>
+                          <li>Контроль времени при наложении жгута (не более 1 часа)</li>
+                          <li>Не использовать промедол при ранении головы</li>
+                          <li>Профилактика гипотермии (согревание раненого)</li>
+                          <li>Полный осмотр для выявления всех повреждений</li>
+                        </ul>
+                      </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="item-4">
+                      <AccordionTrigger>
+                        <div className="flex items-center gap-2">
+                          <Shield className="h-4 w-4 text-green-500" />
+                          Критические ошибки
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <ul className="list-disc list-inside space-y-2 text-sm">
+                          <li>Несвоевременное снятие жгута</li>
+                          <li>Игнорирование оценки тактической обстановки</li>
+                          <li>Введение обезболивающего до остановки кровотечения</li>
+                          <li>Неполный осмотр пострадавшего</li>
                         </ul>
                       </AccordionContent>
                     </AccordionItem>
@@ -206,29 +265,89 @@ export default function ThemeDetail() {
             <TabsContent value="practice" className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Практические упражнения</CardTitle>
+                  <CardTitle className="flex items-center gap-2">
+                    <Users className="h-5 w-5" />
+                    Практические упражнения
+                  </CardTitle>
                   <CardDescription>
-                    Отработка навыков на практике
+                    Отработка навыков на практике в условиях, приближенных к боевым
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="p-4 bg-muted rounded-lg">
-                    <h4 className="font-semibold mb-2">Упражнение 1: Алгоритм действий</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Отработайте последовательность действий согласно изученному протоколу
-                    </p>
+                  <div className="p-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary">
+                    <div className="flex items-start gap-3">
+                      <div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                        1
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">Алгоритм действий</h4>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          Отработайте последовательность действий согласно изученному протоколу
+                        </p>
+                        <ul className="text-sm space-y-1 ml-4 list-disc">
+                          <li>Оценка обстановки и угроз</li>
+                          <li>Выполнение алгоритма по шагам</li>
+                          <li>Контроль критических параметров</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <div className="p-4 bg-muted rounded-lg">
-                    <h4 className="font-semibold mb-2">Упражнение 2: Работа с оборудованием</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Практическое применение табельных средств первой помощи
-                    </p>
+
+                  <div className="p-4 bg-gradient-to-r from-blue-500/10 to-blue-500/5 rounded-lg border-l-4 border-blue-500">
+                    <div className="flex items-start gap-3">
+                      <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                        2
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">Работа с оборудованием</h4>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          Практическое применение табельных средств первой помощи
+                        </p>
+                        <ul className="text-sm space-y-1 ml-4 list-disc">
+                          <li>Наложение жгута в различных условиях</li>
+                          <li>Использование гемостатиков и повязок</li>
+                          <li>Работа с дыхательными путями</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <div className="p-4 bg-muted rounded-lg">
-                    <h4 className="font-semibold mb-2">Упражнение 3: Работа в условиях стресса</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Отработка навыков в условиях, приближенных к реальным
-                    </p>
+
+                  <div className="p-4 bg-gradient-to-r from-amber-500/10 to-amber-500/5 rounded-lg border-l-4 border-amber-500">
+                    <div className="flex items-start gap-3">
+                      <div className="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                        3
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">Работа в условиях стресса</h4>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          Отработка навыков в условиях, приближенных к реальным боевым действиям
+                        </p>
+                        <ul className="text-sm space-y-1 ml-4 list-disc">
+                          <li>Выполнение действий под давлением времени</li>
+                          <li>Работа при ограниченной видимости</li>
+                          <li>Взаимодействие в составе группы</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-gradient-to-r from-green-500/10 to-green-500/5 rounded-lg border-l-4 border-green-500">
+                    <div className="flex items-start gap-3">
+                      <div className="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
+                        4
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">Комплексная отработка</h4>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          Отработка всех элементов темы в комплексе
+                        </p>
+                        <ul className="text-sm space-y-1 ml-4 list-disc">
+                          <li>Сценарные учения с ролевым распределением</li>
+                          <li>Работа с несколькими пострадавшими</li>
+                          <li>Анализ и работа над ошибками</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
