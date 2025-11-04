@@ -153,6 +153,16 @@ import precardialStrike1 from "@/assets/precardial-strike-1.jpg";
 import precardialStrike2 from "@/assets/precardial-strike-2.jpg";
 import precardialStrike3 from "@/assets/precardial-strike-3.jpg";
 import defibrillation from "@/assets/defibrillation.jpg";
+import medkitEchelon from "@/assets/medkit-echelon.jpg";
+import medkitTourniquetPlacement1 from "@/assets/medkit-tourniquet-placement-1.jpg";
+import medkitScissorsKeeper from "@/assets/medkit-scissors-keeper.jpg";
+import medkitIndividualPlacement from "@/assets/medkit-individual-placement.jpg";
+import medkitIndividualContents from "@/assets/medkit-individual-contents.jpg";
+import medkitIvAccessImprovised from "@/assets/medkit-iv-access-improvised.jpg";
+import medkitIvAccessNar from "@/assets/medkit-iv-access-nar.jpg";
+import medkitEchelon1Platform from "@/assets/medkit-echelon-1-platform.jpg";
+import medkitEchelon2Platform from "@/assets/medkit-echelon-2-platform.jpg";
+import medkitEchelon3Platform from "@/assets/medkit-echelon-3-platform.jpg";
 
 const themeImages: Record<number, string> = {
   1: anatomyImage,
@@ -1684,6 +1694,100 @@ export default function ThemeDetail() {
                                   </div>
                                 </div>
                                 <p className="text-sm text-muted-foreground mt-2">Анализ предотвратимых потерь и нормативная база</p>
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </div>
+                      )}
+
+                      {theme.id === 14 && (
+                        <div className="mt-8 space-y-6">
+                          <h3 className="text-xl font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации к теме
+                          </h3>
+                          
+                          <div className="space-y-4">
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Эшелонирование медицинского имущества</h4>
+                                <img src={medkitEchelon} alt="Эшелонирование медицинского имущества" className="w-full h-auto rounded-lg" />
+                                <p className="text-sm text-muted-foreground mt-2">Нулевой, первый, второй и третий эшелоны</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Размещение турникета и инструментов</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Размещение турникета на разгрузочном жилете</p>
+                                    <img src={medkitTourniquetPlacement1} alt="Варианты размещения турникета" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Ножницы с кипером</p>
+                                    <img src={medkitScissorsKeeper} alt="Ножницы специальные с кипером" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                                <p className="text-sm text-muted-foreground mt-2">Правильное размещение имущества нулевого эшелона</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Индивидуальная аптечка (Эшелон-1)</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Размещение на снаряжении</p>
+                                    <img src={medkitIndividualPlacement} alt="Варианты размещения индивидуальной аптечки" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Содержимое аптечки</p>
+                                    <img src={medkitIndividualContents} alt="Опись индивидуальной аптечки" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                                <p className="text-sm text-muted-foreground mt-2">Для само- и взаимопомощи в условиях боя</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Наборы для внутривенного доступа</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Импровизированный набор</p>
+                                    <img src={medkitIvAccessImprovised} alt="Набор для внутривенного доступа импровизированный" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">NAR SALINE LOCK KIT</p>
+                                    <img src={medkitIvAccessNar} alt="Набор для внутривенного доступа NAR" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                                <p className="text-sm text-muted-foreground mt-2">Готовые и импровизированные комплекты</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Универсальная платформа «Эшелон-1»</h4>
+                                <img src={medkitEchelon1Platform} alt="Аптечка на платформе Эшелон-1" className="w-full h-auto rounded-lg" />
+                                <p className="text-sm text-muted-foreground mt-2">Индивидуальная аптечка на универсальной платформе</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Универсальная платформа «Эшелон-2»</h4>
+                                <img src={medkitEchelon2Platform} alt="Аптечка на платформе Эшелон-2" className="w-full h-auto rounded-lg" />
+                                <p className="text-sm text-muted-foreground mt-2">Групповой комплект для оказания помощи в укрытии</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Универсальная платформа «Эшелон-3»</h4>
+                                <img src={medkitEchelon3Platform} alt="Аптечка на платформе Эшелон-3" className="w-full h-auto rounded-lg" />
+                                <p className="text-sm text-muted-foreground mt-2">Расширенный комплект (рюкзак медицинский)</p>
                               </CardContent>
                             </Card>
                           </div>
