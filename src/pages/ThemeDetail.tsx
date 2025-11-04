@@ -61,6 +61,29 @@ import cprAed2 from "@/assets/cpr-aed-2.jpg";
 import cprAedUse from "@/assets/cpr-aed-use.jpg";
 import cprAutopulse from "@/assets/cpr-autopulse.jpg";
 import cprAssistantDevices from "@/assets/cpr-assistant-devices.jpg";
+import pneumothoraxClosed1 from "@/assets/pneumothorax-closed-1.jpg";
+import pneumothoraxClosed2 from "@/assets/pneumothorax-closed-2.jpg";
+import pneumothoraxPosition1 from "@/assets/pneumothorax-position-1.jpg";
+import pneumothoraxPosition2 from "@/assets/pneumothorax-position-2.jpg";
+import pneumothoraxTension from "@/assets/pneumothorax-tension.jpg";
+import pneumothoraxDecompression1 from "@/assets/pneumothorax-decompression-1.jpg";
+import pneumothoraxDecompression2 from "@/assets/pneumothorax-decompression-2.jpg";
+import pneumothoraxSeal1 from "@/assets/pneumothorax-seal-1.jpg";
+import pneumothoraxSeal2 from "@/assets/pneumothorax-seal-2.jpg";
+import pneumothoraxSeal3 from "@/assets/pneumothorax-seal-3.jpg";
+import pneumothoraxSeal4 from "@/assets/pneumothorax-seal-4.jpg";
+import pneumothoraxSeal5 from "@/assets/pneumothorax-seal-5.jpg";
+import pneumothoraxSeal6 from "@/assets/pneumothorax-seal-6.jpg";
+import pneumothoraxImprovisedSeal1 from "@/assets/pneumothorax-improvised-seal-1.jpg";
+import pneumothoraxImprovisedSeal2 from "@/assets/pneumothorax-improvised-seal-2.jpg";
+import chestBrokenRibs1 from "@/assets/chest-broken-ribs-1.jpg";
+import chestBrokenRibs2 from "@/assets/chest-broken-ribs-2.jpg";
+import chestFlail1 from "@/assets/chest-flail-1.jpg";
+import chestFlail2 from "@/assets/chest-flail-2.jpg";
+import chestFlail3 from "@/assets/chest-flail-3.jpg";
+import chestBandage1 from "@/assets/chest-bandage-1.jpg";
+import chestBandage2 from "@/assets/chest-bandage-2.jpg";
+import chestBandage3 from "@/assets/chest-bandage-3.jpg";
 
 const themeImages: Record<number, string> = {
   1: anatomyImage,
@@ -832,6 +855,202 @@ export default function ThemeDetail() {
                                   alt="Ассистенты СЛР"
                                   className="w-full h-auto rounded-lg"
                                 />
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </div>
+                      )}
+
+                      {theme.id === 6 && (
+                        <div className="mt-8 space-y-6">
+                          <h3 className="text-xl font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации к теме
+                          </h3>
+                          
+                          <div className="space-y-4">
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Закрытый пневмоторакс</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={pneumothoraxClosed1}
+                                    alt="Закрытый пневмоторакс - схема 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={pneumothoraxClosed2}
+                                    alt="Закрытый пневмоторакс - схема 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Положения для иммобилизации при пневмотораксе</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={pneumothoraxPosition1}
+                                    alt="Положение полусидя"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={pneumothoraxPosition2}
+                                    alt="Положение на поврежденном боку"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Напряженный (клапанный) пневмоторакс</h4>
+                                <img
+                                  src={pneumothoraxTension}
+                                  alt="Напряженный пневмоторакс"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Декомпрессия специальной иглой</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={pneumothoraxDecompression1}
+                                    alt="Точки декомпрессии"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={pneumothoraxDecompression2}
+                                    alt="Техника декомпрессии"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Окклюзионные заклейки (штатные средства)</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <img
+                                    src={pneumothoraxSeal1}
+                                    alt="Окклюзионная заклейка - тип 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={pneumothoraxSeal2}
+                                    alt="Окклюзионная заклейка - тип 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={pneumothoraxSeal3}
+                                    alt="Окклюзионная заклейка - тип 3"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={pneumothoraxSeal4}
+                                    alt="Окклюзионная заклейка - тип 4"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={pneumothoraxSeal5}
+                                    alt="Окклюзионная заклейка - тип 5"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={pneumothoraxSeal6}
+                                    alt="Окклюзионная заклейка - тип 6"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Подручные средства герметизации</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={pneumothoraxImprovisedSeal1}
+                                    alt="Пленка с пластырем - вариант 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={pneumothoraxImprovisedSeal2}
+                                    alt="Пленка с пластырем - вариант 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Повреждения грудного каркаса</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={chestBrokenRibs1}
+                                    alt="Сломанные ребра - схема 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={chestBrokenRibs2}
+                                    alt="Сломанные ребра - схема 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Реберный клапан (флотация грудной клетки)</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <img
+                                    src={chestFlail1}
+                                    alt="Реберный клапан - механизм"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={chestFlail2}
+                                    alt="Реберный клапан - патофизиология"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={chestFlail3}
+                                    alt="Реберный клапан - диагностика"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Наложение тугой повязки при переломах ребер</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <img
+                                    src={chestBandage1}
+                                    alt="Тугая повязка - этап 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={chestBandage2}
+                                    alt="Тугая повязка - этап 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={chestBandage3}
+                                    alt="Тугая повязка - этап 3"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
                               </CardContent>
                             </Card>
                           </div>
