@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, BookOpen, CheckCircle, AlertCircle, Heart, Users, Activity, Shield } from "lucide-react";
+import { ArrowLeft, BookOpen, CheckCircle, AlertCircle, Heart, Users, Activity, Shield, FileImage, FileText, Video, Download, ExternalLink } from "lucide-react";
 import bgThemes from "@/assets/bg-themes.jpg";
 import anatomyImage from "@/assets/theme-anatomy.png";
 import skeletonImage from "@/assets/theme-skeleton.jpg";
@@ -36,6 +36,7 @@ export default function ThemeDetail() {
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const [theme, setTheme] = useState<any>(null);
+  const [themeMedia, setThemeMedia] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -60,6 +61,17 @@ export default function ThemeDetail() {
 
       if (!error && data) {
         setTheme(data);
+        
+        // Fetch media for this theme
+        const { data: mediaData } = await supabase
+          .from("theme_media")
+          .select("*")
+          .eq("theme_id", parseInt(id))
+          .order("created_at", { ascending: false });
+        
+        if (mediaData) {
+          setThemeMedia(mediaData);
+        }
       }
       setLoading(false);
     };
@@ -175,9 +187,10 @@ export default function ThemeDetail() {
           </Card>
 
           <Tabs defaultValue="content" className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            <TabsList className="grid w-full grid-cols-2">
+            <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="content">Содержание</TabsTrigger>
               <TabsTrigger value="practice">Практические навыки</TabsTrigger>
+              <TabsTrigger value="media">Медиаматериалы</TabsTrigger>
             </TabsList>
 
             <TabsContent value="content" className="space-y-4">
@@ -789,6 +802,173 @@ export default function ThemeDetail() {
                         </div>
                       </div>
                     </>
+                  )}
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="media" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <FileImage className="h-5 w-5" />
+                    Медиаматериалы темы
+                  </CardTitle>
+                  <CardDescription>
+                    Дополнительные материалы для изучения темы
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {themeMedia.length === 0 ? (
+                    <div className="text-center py-8 text-muted-foreground">
+                      <p>Медиаматериалы еще не добавлены</p>
+                    </div>
+                  ) : (
+                    <div className="space-y-6">
+                      {themeMedia.filter(m => m.media_type === 'image').length > 0 && (
+                        <div>
+                          <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Изображения ({themeMedia.filter(m => m.media_type === 'image').length})
+                          </h3>
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {themeMedia
+                              .filter(m => m.media_type === 'image')
+                              .map((media) => {
+                                const publicUrl = `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/theme-media/${media.file_path}`;
+                                return (
+                                  <div key={media.id} className="group relative rounded-lg overflow-hidden border hover:shadow-lg transition-shadow">
+                                    <img 
+                                      src={publicUrl}
+                                      alt={media.file_name}
+                                      className="w-full h-48 object-cover"
+                                    />
+                                    <div className="p-3 bg-background">
+                                      <p className="text-sm font-medium truncate">{media.file_name}</p>
+                                      <div className="flex gap-2 mt-2">
+                                        <Button
+                                          size="sm"
+                                          variant="outline"
+                                          className="flex-1"
+                                          onClick={() => window.open(publicUrl, '_blank')}
+                                        >
+                                          <ExternalLink className="h-3 w-3 mr-1" />
+                                          Открыть
+                                        </Button>
+                                        <Button
+                                          size="sm"
+                                          variant="outline"
+                                          onClick={() => {
+                                            const link = document.createElement('a');
+                                            link.href = publicUrl;
+                                            link.download = media.file_name;
+                                            link.click();
+                                          }}
+                                        >
+                                          <Download className="h-3 w-3" />
+                                        </Button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      )}
+
+                      {themeMedia.filter(m => m.media_type === 'video').length > 0 && (
+                        <div>
+                          <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                            <Video className="h-5 w-5" />
+                            Видео ({themeMedia.filter(m => m.media_type === 'video').length})
+                          </h3>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {themeMedia
+                              .filter(m => m.media_type === 'video')
+                              .map((media) => {
+                                const publicUrl = `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/theme-media/${media.file_path}`;
+                                return (
+                                  <div key={media.id} className="rounded-lg overflow-hidden border">
+                                    <video 
+                                      controls
+                                      className="w-full aspect-video bg-black"
+                                      src={publicUrl}
+                                    >
+                                      Ваш браузер не поддерживает видео.
+                                    </video>
+                                    <div className="p-3 bg-background">
+                                      <p className="text-sm font-medium truncate">{media.file_name}</p>
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        className="w-full mt-2"
+                                        onClick={() => {
+                                          const link = document.createElement('a');
+                                          link.href = publicUrl;
+                                          link.download = media.file_name;
+                                          link.click();
+                                        }}
+                                      >
+                                        <Download className="h-3 w-3 mr-2" />
+                                        Скачать
+                                      </Button>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      )}
+
+                      {themeMedia.filter(m => m.media_type === 'document').length > 0 && (
+                        <div>
+                          <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                            <FileText className="h-5 w-5" />
+                            Документы ({themeMedia.filter(m => m.media_type === 'document').length})
+                          </h3>
+                          <div className="space-y-2">
+                            {themeMedia
+                              .filter(m => m.media_type === 'document')
+                              .map((media) => {
+                                const publicUrl = `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/theme-media/${media.file_path}`;
+                                return (
+                                  <div key={media.id} className="flex items-center gap-3 p-3 rounded-lg border hover:bg-muted/50 transition-colors">
+                                    <FileText className="h-8 w-8 text-muted-foreground flex-shrink-0" />
+                                    <div className="flex-1 min-w-0">
+                                      <p className="text-sm font-medium truncate">{media.file_name}</p>
+                                      <p className="text-xs text-muted-foreground">
+                                        {media.file_type} • {media.file_size ? `${(media.file_size / 1024).toFixed(1)} KB` : 'Размер неизвестен'}
+                                      </p>
+                                    </div>
+                                    <div className="flex gap-2">
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        onClick={() => window.open(publicUrl, '_blank')}
+                                      >
+                                        <ExternalLink className="h-3 w-3 mr-1" />
+                                        Открыть
+                                      </Button>
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        onClick={() => {
+                                          const link = document.createElement('a');
+                                          link.href = publicUrl;
+                                          link.download = media.file_name;
+                                          link.click();
+                                        }}
+                                      >
+                                        <Download className="h-3 w-3" />
+                                      </Button>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   )}
                 </CardContent>
               </Card>
