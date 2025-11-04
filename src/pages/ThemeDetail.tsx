@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { Session } from "@supabase/supabase-js";
 import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -24,24 +25,18 @@ const themeImages: Record<number, string> = {
 export default function ThemeDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const [theme, setTheme] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        navigate("/auth");
-        return;
-      }
-      setUser(session.user);
-
+    const fetchProfile = async (userId: string) => {
       const { data: profileData } = await supabase
         .from("profiles")
         .select("*")
-        .eq("id", session.user.id)
+        .eq("id", userId)
         .single();
       
       setProfile(profileData);
@@ -62,8 +57,37 @@ export default function ThemeDetail() {
       setLoading(false);
     };
 
-    checkAuth();
+    // Установить listener ПЕРВЫМ
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+        
+        if (!session) {
+          navigate("/auth");
+        } else {
+          setTimeout(() => {
+            fetchProfile(session.user.id);
+          }, 0);
+        }
+      }
+    );
+
+    // ПОТОМ проверить существующую сессию
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      
+      if (!session) {
+        navigate("/auth");
+      } else {
+        fetchProfile(session.user.id);
+      }
+    });
+
     fetchTheme();
+
+    return () => subscription.unsubscribe();
   }, [id, navigate]);
 
   if (loading) {

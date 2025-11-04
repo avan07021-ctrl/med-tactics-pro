@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { Session } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, ClipboardList, Users, BarChart3, Settings, ArrowRight } from "lucide-react";
@@ -9,52 +10,50 @@ import bgMain from "@/assets/bg-main.jpg";
 
 const Index = () => {
   const navigate = useNavigate();
+  const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
 
   useEffect(() => {
-    // Проверка текущей сессии
-    const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        setUser(session.user);
-        
-        // Получить профиль пользователя
-        const { data: profileData } = await supabase
-          .from("profiles")
-          .select("*")
-          .eq("id", session.user.id)
-          .single();
-        
-        if (profileData) {
-          setProfile(profileData);
-        }
+    // Функция для загрузки профиля
+    const fetchProfile = async (userId: string) => {
+      const { data: profileData } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", userId)
+        .single();
+      
+      if (profileData) {
+        setProfile(profileData);
       }
     };
 
-    checkSession();
-
-    // Подписка на изменения auth state
+    // Установить listener ПЕРВЫМ
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        if (session) {
-          setUser(session.user);
-          
-          const { data: profileData } = await supabase
-            .from("profiles")
-            .select("*")
-            .eq("id", session.user.id)
-            .single();
-          
-          if (profileData) {
-            setProfile(profileData);
-          }
+      (event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+        
+        // Использовать setTimeout для отложенных Supabase вызовов
+        if (session?.user) {
+          setTimeout(() => {
+            fetchProfile(session.user.id);
+          }, 0);
         } else {
-          setUser(null);
           setProfile(null);
         }
       }
     );
+
+    // ПОТОМ проверить существующую сессию
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      
+      if (session?.user) {
+        fetchProfile(session.user.id);
+      }
+    });
 
     return () => subscription.unsubscribe();
   }, []);

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { Session } from "@supabase/supabase-js";
 import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -16,6 +17,7 @@ import bgAdmin from "@/assets/bg-admin.jpg";
 export default function Admin() {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const [themes, setThemes] = useState<any[]>([]);
@@ -26,17 +28,11 @@ export default function Admin() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        navigate("/auth");
-        return;
-      }
-
+    const checkAdminAndFetchProfile = async (userId: string) => {
       const { data: profileData } = await supabase
         .from("profiles")
         .select("*")
-        .eq("id", session.user.id)
+        .eq("id", userId)
         .single();
       
       if (profileData?.role !== "admin") {
@@ -44,7 +40,6 @@ export default function Admin() {
         return;
       }
 
-      setUser(session.user);
       setProfile(profileData);
     };
 
@@ -62,14 +57,47 @@ export default function Admin() {
       if (themesData) {
         setThemes(themesData);
       }
+      if (themesData) {
+        setThemes(themesData);
+      }
+
       if (questionsData) {
         setQuestions(questionsData);
         setFilteredQuestions(questionsData);
       }
     };
 
-    checkAuth();
+    // Установить listener ПЕРВЫМ
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+        
+        if (!session) {
+          navigate("/auth");
+        } else {
+          setTimeout(() => {
+            checkAdminAndFetchProfile(session.user.id);
+          }, 0);
+        }
+      }
+    );
+
+    // ПОТОМ проверить существующую сессию
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      
+      if (!session) {
+        navigate("/auth");
+      } else {
+        checkAdminAndFetchProfile(session.user.id);
+      }
+    });
+
     fetchData();
+
+    return () => subscription.unsubscribe();
   }, [navigate]);
 
   useEffect(() => {
