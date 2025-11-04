@@ -114,6 +114,16 @@ import desmurgyShoulder3 from "@/assets/desmurgy-shoulder-3.jpg";
 import desmurgyAxilla1 from "@/assets/desmurgy-axilla-1.jpg";
 import desmurgyAxilla2 from "@/assets/desmurgy-axilla-2.jpg";
 import desmurgyAxilla3 from "@/assets/desmurgy-axilla-3.jpg";
+import transportStretcher1 from "@/assets/transport-stretcher-1.jpg";
+import transportStretcher2 from "@/assets/transport-stretcher-2.jpg";
+import transportSafetyRope from "@/assets/transport-safety-rope.jpg";
+import transportHelicopterLift1 from "@/assets/transport-helicopter-lift-1.jpg";
+import transportHelicopterLift2 from "@/assets/transport-helicopter-lift-2.jpg";
+import transportHelicopterLift3 from "@/assets/transport-helicopter-lift-3.jpg";
+import transportVehicle1 from "@/assets/transport-vehicle-1.jpg";
+import transportVehicle2 from "@/assets/transport-vehicle-2.jpg";
+import transportVehicle3 from "@/assets/transport-vehicle-3.jpg";
+import transportVehicle4 from "@/assets/transport-vehicle-4.jpg";
 
 const themeImages: Record<number, string> = {
   1: anatomyImage,
@@ -1297,6 +1307,57 @@ export default function ThemeDetail() {
                                     alt="Бандаж подмышечной впадины - этап 3"
                                     className="w-full h-auto rounded-lg"
                                   />
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </div>
+                      )}
+
+                      {theme.id === 8 && (
+                        <div className="mt-8 space-y-6">
+                          <h3 className="text-xl font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации к теме
+                          </h3>
+                          
+                          <div className="space-y-4">
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Виды подвесных носилок</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img src={transportStretcher1} alt="Подвесные носилки тип 1" className="w-full h-auto rounded-lg" />
+                                  <img src={transportStretcher2} alt="Подвесные носилки тип 2" className="w-full h-auto rounded-lg" />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Использование страховочной веревки</h4>
+                                <img src={transportSafetyRope} alt="Страховочная веревка" className="w-full h-auto rounded-lg" />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Подъем раненого в сопровождении спасателя</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <img src={transportHelicopterLift1} alt="Подъем на вертолет - этап 1" className="w-full h-auto rounded-lg" />
+                                  <img src={transportHelicopterLift2} alt="Подъем на вертолет - этап 2" className="w-full h-auto rounded-lg" />
+                                  <img src={transportHelicopterLift3} alt="Подъем на вертолет - этап 3" className="w-full h-auto rounded-lg" />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Размещение раненого в автомобилях</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img src={transportVehicle1} alt="Размещение в СТС Тигр" className="w-full h-auto rounded-lg" />
+                                  <img src={transportVehicle2} alt="Размещение в Toyota Hilux" className="w-full h-auto rounded-lg" />
+                                  <img src={transportVehicle3} alt="Размещение в кузове КамАЗ" className="w-full h-auto rounded-lg" />
+                                  <img src={transportVehicle4} alt="Погрузка раненого" className="w-full h-auto rounded-lg" />
                                 </div>
                               </CardContent>
                             </Card>
