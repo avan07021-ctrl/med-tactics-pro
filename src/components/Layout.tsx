@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Cross, LogOut, BookOpen, ClipboardList, Settings } from "lucide-react";
+import avangardLogo from "@/assets/avangard-logo.jpg";
 
 interface LayoutProps {
   children: ReactNode;
@@ -33,11 +34,11 @@ export const Layout = ({ children, user, isAdmin }: LayoutProps) => {
       <header className="border-b bg-card shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2">
-              <Cross className="h-8 w-8 text-primary" />
+            <Link to="/" className="flex items-center gap-3 hover-scale">
+              <img src={avangardLogo} alt="Авангард" className="h-12 w-12 object-contain" />
               <div>
                 <h1 className="text-xl font-bold text-foreground">Тактическая Медицина</h1>
-                <p className="text-xs text-muted-foreground">Образовательная платформа</p>
+                <p className="text-xs text-muted-foreground">ОСЛ «Авангард»</p>
               </div>
             </Link>
             

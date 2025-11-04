@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { Cross } from "lucide-react";
+import avangardLogo from "@/assets/avangard-logo.jpg";
 
 export default function Auth() {
   const navigate = useNavigate();
@@ -81,14 +81,14 @@ export default function Auth() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted p-4">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md animate-scale-in">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
-            <Cross className="h-16 w-16 text-primary" />
+            <img src={avangardLogo} alt="ОСЛ Авангард" className="h-20 w-20 object-contain hover-scale" />
           </div>
           <CardTitle className="text-2xl">Тактическая Медицина</CardTitle>
           <CardDescription>
-            Образовательная платформа для изучения первой помощи
+            ОСЛ «Авангард» - Образовательная платформа
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -121,7 +121,7 @@ export default function Auth() {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full" disabled={loading}>
+                <Button type="submit" className="w-full hover-scale" disabled={loading}>
                   {loading ? "Загрузка..." : "Войти"}
                 </Button>
               </form>
@@ -162,7 +162,7 @@ export default function Auth() {
                     minLength={6}
                   />
                 </div>
-                <Button type="submit" className="w-full" disabled={loading}>
+                <Button type="submit" className="w-full hover-scale" disabled={loading}>
                   {loading ? "Загрузка..." : "Зарегистрироваться"}
                 </Button>
               </form>

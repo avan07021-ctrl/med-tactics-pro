@@ -159,7 +159,7 @@ export default function Admin() {
               Управление темами и тестовыми вопросами
             </p>
           </div>
-          <Button onClick={importTestData}>
+          <Button onClick={importTestData} className="hover-scale">
             <Upload className="mr-2 h-4 w-4" />
             Импортировать тестовые данные
           </Button>
@@ -173,8 +173,8 @@ export default function Admin() {
 
           <TabsContent value="questions">
             <div className="space-y-4">
-              {questions.map((question) => (
-                <Card key={question.id}>
+              {questions.map((question, idx) => (
+                <Card key={question.id} className="card-hover animate-fade-in" style={{ animationDelay: `${idx * 0.05}s` }}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -221,8 +221,8 @@ export default function Admin() {
 
           <TabsContent value="themes">
             <div className="space-y-4">
-              {themes.map((theme) => (
-                <Card key={theme.id}>
+              {themes.map((theme, idx) => (
+                <Card key={theme.id} className="card-hover animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
                   <CardHeader>
                     <CardTitle>{theme.name}</CardTitle>
                     <CardDescription>

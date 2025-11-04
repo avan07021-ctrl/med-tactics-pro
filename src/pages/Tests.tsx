@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { ClipboardCheck, Info } from "lucide-react";
+import { ClipboardCheck, Info, Play } from "lucide-react";
 
 export default function Tests() {
   const navigate = useNavigate();
@@ -116,7 +116,7 @@ export default function Tests() {
     return (
       <Layout user={user} isAdmin={profile?.role === "admin"}>
         <div className="max-w-4xl mx-auto">
-          <div className="mb-8">
+          <div className="mb-8 animate-fade-in">
             <h1 className="text-3xl font-bold mb-2">Тестирование</h1>
             <p className="text-muted-foreground">
               Выберите тему для прохождения теста
@@ -125,7 +125,7 @@ export default function Tests() {
 
           <div className="grid gap-4 md:grid-cols-2">
             {themes.map((theme, index) => (
-              <Card key={theme.id} className="hover:shadow-lg transition-shadow">
+              <Card key={theme.id} className="card-hover animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader>
                   <Badge variant="outline" className="w-fit mb-2">
                     Тема {index + 1}
@@ -136,7 +136,8 @@ export default function Tests() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button onClick={() => startTest(theme.id)} className="w-full">
+                  <Button onClick={() => startTest(theme.id)} className="w-full hover-scale">
+                    <Play className="mr-2 h-4 w-4" />
                     Начать тест
                   </Button>
                 </CardContent>
@@ -153,14 +154,14 @@ export default function Tests() {
     return (
       <Layout user={user} isAdmin={profile?.role === "admin"}>
         <div className="max-w-2xl mx-auto">
-          <Card>
+          <Card className="animate-scale-in">
             <CardHeader className="text-center">
               <ClipboardCheck className="h-16 w-16 text-primary mx-auto mb-4" />
               <CardTitle className="text-2xl">Результаты теста</CardTitle>
             </CardHeader>
             <CardContent className="text-center space-y-6">
               <div>
-                <div className="text-6xl font-bold text-primary mb-2">
+                <div className="text-6xl font-bold text-primary mb-2 animate-fade-in">
                   {percentage}%
                 </div>
                 <p className="text-lg text-muted-foreground">
@@ -172,11 +173,12 @@ export default function Tests() {
                 {questions.map((q, index) => (
                   <div
                     key={q.id}
-                    className={`p-3 rounded-lg text-left ${
+                    className={`p-3 rounded-lg text-left transition-all animate-fade-in ${
                       answers[index] === q.correct_answer
                         ? "bg-green-100 dark:bg-green-900"
                         : "bg-red-100 dark:bg-red-900"
                     }`}
+                    style={{ animationDelay: `${index * 0.05}s` }}
                   >
                     <p className="font-medium text-sm mb-1">{q.question}</p>
                     <p className="text-xs">
@@ -189,7 +191,7 @@ export default function Tests() {
                 ))}
               </div>
 
-              <Button onClick={resetTest} className="w-full">
+              <Button onClick={resetTest} className="w-full hover-scale">
                 Вернуться к выбору темы
               </Button>
             </CardContent>
@@ -204,7 +206,7 @@ export default function Tests() {
   return (
     <Layout user={user} isAdmin={profile?.role === "admin"}>
       <div className="max-w-3xl mx-auto">
-        <Card>
+        <Card className="animate-fade-in">
           <CardHeader>
             <div className="flex items-center justify-between mb-4">
               <Badge>
@@ -222,10 +224,11 @@ export default function Tests() {
               onValueChange={handleAnswer}
             >
               <div className="space-y-3">
-                {["A", "B", "C", "D"].map((option) => (
+                {["A", "B", "C", "D"].map((option, idx) => (
                   <div
                     key={option}
-                    className="flex items-center space-x-2 p-4 rounded-lg border hover:bg-accent transition-colors"
+                    className="flex items-center space-x-2 p-4 rounded-lg border hover:bg-accent transition-all cursor-pointer animate-fade-in"
+                    style={{ animationDelay: `${idx * 0.1}s` }}
                   >
                     <RadioGroupItem value={option} id={option} />
                     <Label htmlFor={option} className="flex-1 cursor-pointer">
@@ -237,7 +240,7 @@ export default function Tests() {
             </RadioGroup>
 
             {question.hint && (
-              <div className="flex gap-2 p-4 rounded-lg bg-muted">
+              <div className="flex gap-2 p-4 rounded-lg bg-muted animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <Info className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-medium text-sm mb-1">Подсказка:</p>
@@ -259,12 +262,12 @@ export default function Tests() {
                 <Button
                   onClick={submitTest}
                   disabled={Object.keys(answers).length !== questions.length}
-                  className="flex-1"
+                  className="flex-1 hover-scale"
                 >
                   Завершить тест
                 </Button>
               ) : (
-                <Button onClick={nextQuestion} className="flex-1">
+                <Button onClick={nextQuestion} className="flex-1 hover-scale">
                   Далее
                 </Button>
               )}
