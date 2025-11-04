@@ -13,7 +13,7 @@ import bgThemes from "@/assets/bg-themes.jpg";
 import anatomyImage from "@/assets/theme-anatomy.png";
 import skeletonImage from "@/assets/theme-skeleton.jpg";
 import arterialPressurePoints from "@/assets/arterial-pressure-points.png";
-import musclesImage from "@/assets/theme-muscles.jpg";
+
 import skeletonFrontImg from "@/assets/anatomy-skeleton-front.jpg";
 import skeletonBackImg from "@/assets/anatomy-skeleton-back.jpg";
 import boneStructureImg from "@/assets/anatomy-bone-structure.jpg";
@@ -46,7 +46,6 @@ const themeImages: Record<number, string> = {
   1: anatomyImage,
   2: skeletonImage,
   3: arterialPressurePoints,
-  4: musclesImage,
 };
 
 export default function ThemeDetail() {
