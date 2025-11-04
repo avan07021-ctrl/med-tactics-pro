@@ -10,6 +10,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { Award, BookOpen, Clock, TrendingUp, Users, CheckCircle2, XCircle } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import bgStatistics from "@/assets/bg-statistics.jpg";
 
 interface UserProgress {
@@ -47,6 +48,7 @@ export default function Statistics() {
   const [userProgress, setUserProgress] = useState<UserProgress[]>([]);
   const [testResults, setTestResults] = useState<TestResult[]>([]);
   const [allUsers, setAllUsers] = useState<any[]>([]);
+  const [selectedUserId, setSelectedUserId] = useState<string>("all");
 
   useEffect(() => {
     const fetchProfileAndData = async (userId: string) => {
@@ -392,77 +394,87 @@ export default function Statistics() {
     </div>
   );
 
-  const renderAdminStats = () => (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardDescription className="flex items-center gap-2">
-              <Users className="h-4 w-4" />
-              Всего студентов
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold">
-              {allUsers.filter(u => u.role === "student").length}
-            </div>
-          </CardContent>
-        </Card>
+  const renderAdminStats = () => {
+    // Фильтрация данных по выбранному пользователю
+    const filteredProgress = selectedUserId === "all" 
+      ? userProgress 
+      : userProgress.filter(p => p.user_id === selectedUserId);
+    
+    const filteredResults = selectedUserId === "all"
+      ? testResults
+      : testResults.filter(r => r.user_id === selectedUserId);
 
-        <Card>
-          <CardHeader className="pb-2">
-            <CardDescription className="flex items-center gap-2">
-              <Award className="h-4 w-4" />
-              Средний балл группы
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold">{getAverageScore()}%</div>
-            <p className="text-xs text-muted-foreground mt-2">
-              Всего тестов: {testResults.length}
-            </p>
-          </CardContent>
-        </Card>
+    return (
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Card>
+            <CardHeader className="pb-2">
+              <CardDescription className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                Всего студентов
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold">
+                {allUsers.filter(u => u.role === "student").length}
+              </div>
+            </CardContent>
+          </Card>
 
-        <Card>
-          <CardHeader className="pb-2">
-            <CardDescription className="flex items-center gap-2">
-              <TrendingUp className="h-4 w-4" />
-              Активность
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold">
-              {userProgress.filter(p => p.completed).length}
-            </div>
-            <p className="text-xs text-muted-foreground mt-2">Завершено тем</p>
-          </CardContent>
-        </Card>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardDescription className="flex items-center gap-2">
+                <Award className="h-4 w-4" />
+                Средний балл группы
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold">{getAverageScore()}%</div>
+              <p className="text-xs text-muted-foreground mt-2">
+                Всего тестов: {testResults.length}
+              </p>
+            </CardContent>
+          </Card>
 
-        <Card>
-          <CardHeader className="pb-2">
-            <CardDescription className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4" />
-              Успеваемость
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold">
-              {testResults.length > 0 
-                ? Math.round((testResults.filter(r => r.passed).length / testResults.length) * 100)
-                : 0}%
-            </div>
-            <p className="text-xs text-muted-foreground mt-2">Сдано тестов</p>
-          </CardContent>
-        </Card>
-      </div>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardDescription className="flex items-center gap-2">
+                <TrendingUp className="h-4 w-4" />
+                Активность
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold">
+                {userProgress.filter(p => p.completed).length}
+              </div>
+              <p className="text-xs text-muted-foreground mt-2">Завершено тем</p>
+            </CardContent>
+          </Card>
 
-      <Tabs defaultValue="students">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="students">Студенты</TabsTrigger>
-          <TabsTrigger value="progress">Прогресс</TabsTrigger>
-          <TabsTrigger value="tests">Результаты</TabsTrigger>
-        </TabsList>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardDescription className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4" />
+                Успеваемость
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold">
+                {testResults.length > 0 
+                  ? Math.round((testResults.filter(r => r.passed).length / testResults.length) * 100)
+                  : 0}%
+              </div>
+              <p className="text-xs text-muted-foreground mt-2">Сдано тестов</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <Tabs defaultValue="students">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="students">Студенты</TabsTrigger>
+            <TabsTrigger value="progress">Прогресс</TabsTrigger>
+            <TabsTrigger value="tests">Результаты</TabsTrigger>
+          </TabsList>
 
         <TabsContent value="students" className="mt-4">
           <Card>
@@ -506,11 +518,30 @@ export default function Statistics() {
         <TabsContent value="progress" className="mt-4">
           <Card>
             <CardHeader>
-              <CardTitle>Прогресс студентов</CardTitle>
-              <CardDescription>Продвижение по темам курса</CardDescription>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle>Прогресс студентов</CardTitle>
+                  <CardDescription>Продвижение по темам курса</CardDescription>
+                </div>
+                <Select value={selectedUserId} onValueChange={setSelectedUserId}>
+                  <SelectTrigger className="w-[240px]">
+                    <SelectValue placeholder="Выберите студента" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Все студенты</SelectItem>
+                    {allUsers
+                      .filter(u => u.role === "student")
+                      .map(user => (
+                        <SelectItem key={user.id} value={user.id}>
+                          {user.full_name || user.email}
+                        </SelectItem>
+                      ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </CardHeader>
             <CardContent>
-              {userProgress.length === 0 ? (
+              {filteredProgress.length === 0 ? (
                 <p className="text-center text-muted-foreground py-8">
                   Нет данных о прогрессе
                 </p>
@@ -525,7 +556,7 @@ export default function Statistics() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {userProgress.map((progress) => (
+                    {filteredProgress.map((progress) => (
                       <TableRow key={progress.id}>
                         <TableCell className="font-medium">
                           {progress.profile?.full_name || progress.profile?.email || "Неизвестно"}
@@ -558,11 +589,30 @@ export default function Statistics() {
         <TabsContent value="tests" className="mt-4">
           <Card>
             <CardHeader>
-              <CardTitle>Результаты тестов</CardTitle>
-              <CardDescription>История всех попыток</CardDescription>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle>Результаты тестов</CardTitle>
+                  <CardDescription>История всех попыток</CardDescription>
+                </div>
+                <Select value={selectedUserId} onValueChange={setSelectedUserId}>
+                  <SelectTrigger className="w-[240px]">
+                    <SelectValue placeholder="Выберите студента" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Все студенты</SelectItem>
+                    {allUsers
+                      .filter(u => u.role === "student")
+                      .map(user => (
+                        <SelectItem key={user.id} value={user.id}>
+                          {user.full_name || user.email}
+                        </SelectItem>
+                      ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </CardHeader>
             <CardContent>
-              {testResults.length === 0 ? (
+              {filteredResults.length === 0 ? (
                 <p className="text-center text-muted-foreground py-8">
                   Нет результатов тестов
                 </p>
@@ -578,7 +628,7 @@ export default function Statistics() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {testResults.map((result) => (
+                    {filteredResults.map((result) => (
                       <TableRow key={result.id}>
                         <TableCell className="font-medium">
                           {result.profile?.full_name || result.profile?.email || "Неизвестно"}
@@ -620,7 +670,8 @@ export default function Statistics() {
         </TabsContent>
       </Tabs>
     </div>
-  );
+    );
+  };
 
   return (
     <Layout user={user} isAdmin={isAdmin}>
