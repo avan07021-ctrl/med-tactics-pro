@@ -345,7 +345,7 @@ export default function ThemeDetail() {
                 </>
               ) : (
                 <>
-                  {themeImages[theme.id] && (
+                  {themeImages[theme.id] && theme.id !== 2 && (
                     <Card className="overflow-hidden">
                       <img 
                         src={themeImages[theme.id]} 
