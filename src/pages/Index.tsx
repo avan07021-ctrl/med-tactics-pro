@@ -65,7 +65,7 @@ const Index = () => {
   };
 
   // Рендер для авторизованных пользователей
-  if (user && profile) {
+  if (user) {
     return (
       <div 
         className="min-h-screen bg-gradient-to-br from-background via-background to-muted bg-cover bg-center bg-fixed relative"
@@ -78,10 +78,10 @@ const Index = () => {
               <img src={avangardLogo} alt="ОСЛ Авангард" className="h-24 w-24 object-contain hover-scale animate-float" />
             </div>
             <h1 className="text-4xl font-bold mb-4 vr-text-xl">
-              Добро пожаловать, {profile.full_name || user.email}!
+              Добро пожаловать, {profile?.full_name || user.email}!
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto vr-text-lg">
-              {profile.role === "admin" 
+              {(profile?.role === "admin") 
                 ? "Панель управления образовательной платформой"
                 : "Выберите раздел для продолжения обучения"
               }
@@ -159,7 +159,7 @@ const Index = () => {
                   <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </CardTitle>
                 <CardDescription className="vr-text-lg">
-                  {profile.role === "admin" 
+                  {(profile?.role === "admin") 
                     ? "Отслеживайте прогресс всех студентов"
                     : "Просматривайте свой прогресс обучения"
                   }
@@ -172,7 +172,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            {profile.role === "admin" && (
+            {(profile?.role === "admin") && (
               <Card 
                 className="card-hover animate-fade-in cursor-pointer group backdrop-blur-sm bg-card/95 border-2 border-primary/10 hover:border-primary/30" 
                 style={{ animationDelay: '0.4s' }}
@@ -230,7 +230,7 @@ const Index = () => {
                     <BarChart3 className="mr-2 h-4 w-4" />
                     Статистика
                   </Button>
-                  {profile.role === "admin" && (
+                  {(profile?.role === "admin") && (
                     <Button 
                       variant="secondary" 
                       className="h-auto py-3"
