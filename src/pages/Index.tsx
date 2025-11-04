@@ -76,12 +76,12 @@ const Index = () => {
         <div className="container mx-auto px-4 py-16 relative z-10">
           <div className="text-center mb-12 animate-fade-in">
             <div className="flex items-center justify-center gap-4 mb-6">
-              <img src={avangardLogo} alt="ОСЛ Авангард" className="h-24 w-24 object-contain hover-scale" />
+              <img src={avangardLogo} alt="ОСЛ Авангард" className="h-24 w-24 object-contain hover-scale animate-float" />
             </div>
-            <h1 className="text-4xl font-bold mb-4">
+            <h1 className="text-4xl font-bold mb-4 vr-text-xl">
               Добро пожаловать, {profile.full_name || user.email}!
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto vr-text-lg">
               {profile.role === "admin" 
                 ? "Панель управления образовательной платформой"
                 : "Выберите раздел для продолжения обучения"
@@ -91,7 +91,7 @@ const Index = () => {
               variant="ghost" 
               size="sm" 
               onClick={handleLogout}
-              className="mt-4"
+              className="mt-4 hover-scale"
             >
               Выйти
             </Button>
@@ -99,67 +99,67 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             <Card 
-              className="card-hover animate-fade-in cursor-pointer group" 
+              className="card-hover animate-fade-in cursor-pointer group backdrop-blur-sm bg-card/95 border-2 border-primary/10 hover:border-primary/30" 
               style={{ animationDelay: '0.1s' }}
               onClick={() => navigate("/themes")}
             >
               <CardHeader className="text-center">
-                <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110 animate-pulse-glow">
                   <BookOpen className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="flex items-center justify-center gap-2">
+                <CardTitle className="flex items-center justify-center gap-2 vr-text-lg">
                   Темы курса
-                  <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="vr-text-lg">
                   Изучайте теоретические материалы по тактической медицине
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-center">
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full hover-scale">
                   Перейти к темам
                 </Button>
               </CardContent>
             </Card>
 
             <Card 
-              className="card-hover animate-fade-in cursor-pointer group" 
+              className="card-hover animate-fade-in cursor-pointer group backdrop-blur-sm bg-card/95 border-2 border-primary/10 hover:border-primary/30" 
               style={{ animationDelay: '0.2s' }}
               onClick={() => navigate("/tests")}
             >
               <CardHeader className="text-center">
-                <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
                   <ClipboardList className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="flex items-center justify-center gap-2">
+                <CardTitle className="flex items-center justify-center gap-2 vr-text-lg">
                   Тестирование
-                  <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="vr-text-lg">
                   Проверьте свои знания интерактивными тестами
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-center">
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full hover-scale">
                   Начать тест
                 </Button>
               </CardContent>
             </Card>
 
             <Card 
-              className="card-hover animate-fade-in cursor-pointer group" 
+              className="card-hover animate-fade-in cursor-pointer group backdrop-blur-sm bg-card/95 border-2 border-primary/10 hover:border-primary/30" 
               style={{ animationDelay: '0.3s' }}
               onClick={() => navigate("/statistics")}
             >
               <CardHeader className="text-center">
-                <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
                   <BarChart3 className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="flex items-center justify-center gap-2">
+                <CardTitle className="flex items-center justify-center gap-2 vr-text-lg">
                   Статистика
-                  <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="vr-text-lg">
                   {profile.role === "admin" 
                     ? "Отслеживайте прогресс всех студентов"
                     : "Просматривайте свой прогресс обучения"
@@ -167,7 +167,7 @@ const Index = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-center">
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full hover-scale">
                   Открыть статистику
                 </Button>
               </CardContent>
@@ -175,24 +175,24 @@ const Index = () => {
 
             {profile.role === "admin" && (
               <Card 
-                className="card-hover animate-fade-in cursor-pointer group" 
+                className="card-hover animate-fade-in cursor-pointer group backdrop-blur-sm bg-card/95 border-2 border-primary/10 hover:border-primary/30" 
                 style={{ animationDelay: '0.4s' }}
                 onClick={() => navigate("/admin")}
               >
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
                     <Settings className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="flex items-center justify-center gap-2">
+                  <CardTitle className="flex items-center justify-center gap-2 vr-text-lg">
                     Администрирование
-                    <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="vr-text-lg">
                     Управление вопросами и темами курса
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full hover-scale">
                     Панель админа
                   </Button>
                 </CardContent>
@@ -201,15 +201,15 @@ const Index = () => {
           </div>
 
           <div className="mt-12 max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '0.5s' }}>
-            <Card className="bg-primary text-primary-foreground">
+            <Card className="backdrop-blur-sm bg-primary/95 text-primary-foreground border-2 border-primary-glow shadow-xl">
               <CardHeader>
-                <CardTitle className="text-xl text-center">Быстрые ссылки</CardTitle>
+                <CardTitle className="text-xl text-center vr-text-lg">Быстрые ссылки</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   <Button 
                     variant="secondary" 
-                    className="h-auto py-3"
+                    className="h-auto py-3 hover-scale"
                     onClick={() => navigate("/themes")}
                   >
                     <BookOpen className="mr-2 h-4 w-4" />
@@ -217,7 +217,7 @@ const Index = () => {
                   </Button>
                   <Button 
                     variant="secondary" 
-                    className="h-auto py-3"
+                    className="h-auto py-3 hover-scale"
                     onClick={() => navigate("/tests")}
                   >
                     <ClipboardList className="mr-2 h-4 w-4" />
@@ -225,7 +225,7 @@ const Index = () => {
                   </Button>
                   <Button 
                     variant="secondary" 
-                    className="h-auto py-3"
+                    className="h-auto py-3 hover-scale"
                     onClick={() => navigate("/statistics")}
                   >
                     <BarChart3 className="mr-2 h-4 w-4" />

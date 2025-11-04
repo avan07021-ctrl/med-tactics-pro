@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Cross, LogOut, BookOpen, ClipboardList, Settings, BarChart3 } from "lucide-react";
+import { VRButton } from "@/components/VRButton";
 import avangardLogo from "@/assets/avangard-logo.jpg";
 
 interface LayoutProps {
@@ -44,6 +45,7 @@ export const Layout = ({ children, user, isAdmin }: LayoutProps) => {
             
             {user && (
               <nav className="flex items-center gap-4">
+                <VRButton />
                 <Link to="/themes">
                   <Button variant="ghost" size="sm">
                     <BookOpen className="mr-2 h-4 w-4" />
