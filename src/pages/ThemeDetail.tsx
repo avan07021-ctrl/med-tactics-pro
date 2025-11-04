@@ -26,6 +26,21 @@ import kulakBarinEvacuation from "@/assets/kulak-barin-evacuation.jpg";
 import kulakBarinPreventableLosses from "@/assets/kulak-barin-preventable-losses.jpg";
 import kulakBarinOrder760 from "@/assets/kulak-barin-order-760.jpg";
 import kulakBarinTacticalZones from "@/assets/kulak-barin-tactical-zones.jpg";
+import airwayTongueCollapse from "@/assets/airway-tongue-collapse.jpg";
+import airwayRecoveryPosition1 from "@/assets/airway-recovery-position-1.jpg";
+import airwayRecoveryPosition2 from "@/assets/airway-recovery-position-2.jpg";
+import airwayRecoveryPosition3 from "@/assets/airway-recovery-position-3.jpg";
+import airwayOropharyngeal1 from "@/assets/airway-oropharyngeal-1.jpg";
+import airwayOropharyngeal2 from "@/assets/airway-oropharyngeal-2.jpg";
+import airwayNasal1 from "@/assets/airway-nasal-1.jpg";
+import airwayNasal2 from "@/assets/airway-nasal-2.jpg";
+import airwayNasal3 from "@/assets/airway-nasal-3.jpg";
+import airwayNasal4 from "@/assets/airway-nasal-4.jpg";
+import airwayIgel1 from "@/assets/airway-igel-1.jpg";
+import airwayIgel2 from "@/assets/airway-igel-2.jpg";
+import airwayCricothyrotomy1 from "@/assets/airway-cricothyrotomy-1.jpg";
+import airwayCricothyrotomy2 from "@/assets/airway-cricothyrotomy-2.jpg";
+import airwayCricothyrotomy3 from "@/assets/airway-cricothyrotomy-3.jpg";
 
 const themeImages: Record<number, string> = {
   1: anatomyImage,
@@ -461,6 +476,138 @@ export default function ThemeDetail() {
                                 </CardContent>
                               </Card>
                             ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {theme.id === 4 && (
+                        <div className="mt-8 space-y-6">
+                          <h3 className="text-xl font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации к теме
+                          </h3>
+                          
+                          <div className="space-y-4">
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Западение языка</h4>
+                                <img
+                                  src={airwayTongueCollapse}
+                                  alt="Западение языка"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Перемещение раненого в устойчивое положение</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <img
+                                    src={airwayRecoveryPosition1}
+                                    alt="Перемещение раненого - этап 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={airwayRecoveryPosition2}
+                                    alt="Перемещение раненого - этап 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={airwayRecoveryPosition3}
+                                    alt="Перемещение раненого - этап 3"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Орофарингеальный воздуховод</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={airwayOropharyngeal1}
+                                    alt="Орофарингеальный воздуховод - 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={airwayOropharyngeal2}
+                                    alt="Орофарингеальный воздуховод - 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Назальный воздуховод</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={airwayNasal1}
+                                    alt="Назальный воздуховод - 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={airwayNasal2}
+                                    alt="Назальный воздуховод - 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={airwayNasal3}
+                                    alt="Назальный воздуховод - 3"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={airwayNasal4}
+                                    alt="Назальный воздуховод - 4"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Установка ларингеальной маски I-Gel</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <img
+                                    src={airwayIgel1}
+                                    alt="Ларингеальная маска I-Gel - 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={airwayIgel2}
+                                    alt="Ларингеальная маска I-Gel - 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Алгоритм коникотомии</h4>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                  <img
+                                    src={airwayCricothyrotomy1}
+                                    alt="Коникотомия - этап 1"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={airwayCricothyrotomy2}
+                                    alt="Коникотомия - этап 2"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                  <img
+                                    src={airwayCricothyrotomy3}
+                                    alt="Коникотомия - этап 3"
+                                    className="w-full h-auto rounded-lg"
+                                  />
+                                </div>
+                              </CardContent>
+                            </Card>
                           </div>
                         </div>
                       )}
