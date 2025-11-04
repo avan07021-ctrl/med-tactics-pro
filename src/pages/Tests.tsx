@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Session } from "@supabase/supabase-js";
 import { Layout } from "@/components/Layout";
@@ -15,6 +15,7 @@ import bgTests from "@/assets/bg-tests.jpg";
 export default function Tests() {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
   const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
@@ -80,6 +81,16 @@ export default function Tests() {
 
     return () => subscription.unsubscribe();
   }, [navigate]);
+
+  useEffect(() => {
+    const themeParam = searchParams.get("theme");
+    if (themeParam && themes.length > 0 && !selectedTheme) {
+      const themeId = parseInt(themeParam);
+      if (!isNaN(themeId)) {
+        startTest(themeId);
+      }
+    }
+  }, [searchParams, themes, selectedTheme]);
 
   const startTest = async (themeId: number) => {
     const { data } = await supabase

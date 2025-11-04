@@ -376,7 +376,7 @@ export default function ThemeDetail() {
 
           <div className="mt-6 flex gap-4">
             <Button 
-              onClick={() => navigate("/tests")} 
+              onClick={() => navigate(`/tests?theme=${theme.id}`)} 
               className="flex-1 hover-scale"
             >
               Пройти тест по теме
