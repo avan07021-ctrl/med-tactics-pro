@@ -9,7 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { ClipboardCheck, Info, Play } from "lucide-react";
-import patternBackground from "@/assets/pattern-background.jpg";
+import bgTests from "@/assets/bg-tests.jpg";
 
 export default function Tests() {
   const navigate = useNavigate();
@@ -118,7 +118,7 @@ export default function Tests() {
       <Layout user={user} isAdmin={profile?.role === "admin"}>
         <div 
           className="max-w-4xl mx-auto bg-cover bg-center rounded-lg p-8 relative"
-          style={{ backgroundImage: `url(${patternBackground})` }}
+          style={{ backgroundImage: `url(${bgTests})` }}
         >
           <div className="absolute inset-0 bg-background/80 rounded-lg" />
           <div className="relative z-10">

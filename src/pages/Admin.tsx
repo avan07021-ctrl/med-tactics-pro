@@ -11,7 +11,7 @@ import { QuestionForm } from "@/components/QuestionForm";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import testData from "@/data/test_base.json";
-import patternBackground from "@/assets/pattern-background.jpg";
+import bgAdmin from "@/assets/bg-admin.jpg";
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -255,7 +255,7 @@ export default function Admin() {
     <Layout user={user} isAdmin={true}>
       <div 
         className="max-w-6xl mx-auto bg-cover bg-center rounded-lg p-8 relative"
-        style={{ backgroundImage: `url(${patternBackground})` }}
+        style={{ backgroundImage: `url(${bgAdmin})` }}
       >
         <div className="absolute inset-0 bg-background/85 rounded-lg" />
         <div className="relative z-10">

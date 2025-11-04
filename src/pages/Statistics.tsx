@@ -9,7 +9,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { Award, BookOpen, Clock, TrendingUp, Users, CheckCircle2, XCircle } from "lucide-react";
-import patternBackground from "@/assets/pattern-background.jpg";
+import bgStatistics from "@/assets/bg-statistics.jpg";
 
 interface UserProgress {
   id: string;
@@ -583,7 +583,7 @@ export default function Statistics() {
     <Layout user={user} isAdmin={isAdmin}>
       <div 
         className="max-w-7xl mx-auto bg-cover bg-center rounded-lg p-8 relative"
-        style={{ backgroundImage: `url(${patternBackground})` }}
+        style={{ backgroundImage: `url(${bgStatistics})` }}
       >
         <div className="absolute inset-0 bg-background/90 rounded-lg" />
         <div className="relative z-10">

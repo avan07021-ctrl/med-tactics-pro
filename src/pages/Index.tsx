@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, ClipboardList, Users, BarChart3, Settings, ArrowRight } from "lucide-react";
 import avangardLogo from "@/assets/avangard-logo.jpg";
-import heroBackground from "@/assets/hero-background.jpg";
+import bgMain from "@/assets/bg-main.jpg";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -70,7 +70,7 @@ const Index = () => {
     return (
       <div 
         className="min-h-screen bg-gradient-to-br from-background via-background to-muted bg-cover bg-center bg-fixed relative"
-        style={{ backgroundImage: `url(${heroBackground})` }}
+        style={{ backgroundImage: `url(${bgMain})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/95" />
         <div className="container mx-auto px-4 py-16 relative z-10">
@@ -254,7 +254,7 @@ const Index = () => {
   return (
     <div 
       className="min-h-screen bg-gradient-to-br from-background via-background to-muted bg-cover bg-center bg-fixed relative"
-      style={{ backgroundImage: `url(${heroBackground})` }}
+      style={{ backgroundImage: `url(${bgMain})` }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/95" />
       <div className="container mx-auto px-4 py-16 relative z-10">

@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, BookOpen, CheckCircle, AlertCircle, Heart, Users, Activity, Shield } from "lucide-react";
-import patternBackground from "@/assets/pattern-background.jpg";
+import bgThemes from "@/assets/bg-themes.jpg";
 import anatomyImage from "@/assets/theme-anatomy.png";
 import skeletonImage from "@/assets/theme-skeleton.jpg";
 import jointsImage from "@/assets/theme-joints.jpg";
@@ -101,7 +101,7 @@ export default function ThemeDetail() {
     <Layout user={user} isAdmin={profile?.role === "admin"}>
       <div 
         className="max-w-4xl mx-auto bg-cover bg-center rounded-lg p-8 relative"
-        style={{ backgroundImage: `url(${patternBackground})` }}
+        style={{ backgroundImage: `url(${bgThemes})` }}
       >
         <div className="absolute inset-0 bg-background/85 rounded-lg" />
         <div className="relative z-10">
