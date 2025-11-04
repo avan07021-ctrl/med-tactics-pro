@@ -98,7 +98,12 @@ export default function Themes() {
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {themes.map((theme, index) => (
-              <Card key={theme.id} className="card-hover cursor-pointer animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card 
+                key={theme.id} 
+                className="card-hover cursor-pointer animate-fade-in" 
+                style={{ animationDelay: `${index * 0.1}s` }}
+                onClick={() => navigate(`/themes/${theme.id}`)}
+              >
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <Badge variant="outline" className="mb-2">
