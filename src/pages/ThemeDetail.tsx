@@ -14,6 +14,13 @@ import anatomyImage from "@/assets/theme-anatomy.png";
 import skeletonImage from "@/assets/theme-skeleton.jpg";
 import jointsImage from "@/assets/theme-joints.jpg";
 import musclesImage from "@/assets/theme-muscles.jpg";
+import skeletonFrontImg from "@/assets/anatomy-skeleton-front.jpg";
+import skeletonBackImg from "@/assets/anatomy-skeleton-back.jpg";
+import boneStructureImg from "@/assets/anatomy-bone-structure.jpg";
+import respiratorySystemImg from "@/assets/anatomy-respiratory-system.jpg";
+import circulatorySystemImg from "@/assets/anatomy-circulatory-system.jpg";
+import urinarySystemImg from "@/assets/anatomy-urinary-system.jpg";
+import brainImg from "@/assets/anatomy-brain.jpg";
 
 const themeImages: Record<number, string> = {
   1: anatomyImage,
@@ -174,35 +181,174 @@ export default function ThemeDetail() {
             </TabsList>
 
             <TabsContent value="content" className="space-y-4">
-              {themeImages[theme.id] && (
-                <Card className="overflow-hidden">
-                  <img 
-                    src={themeImages[theme.id]} 
-                    alt={theme.name}
-                    className="w-full h-auto object-cover"
-                  />
-                </Card>
-              )}
+              {theme.id === 18 ? (
+                <>
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <BookOpen className="h-5 w-5" />
+                        Кости скелета человека
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <img 
+                            src={skeletonFrontImg} 
+                            alt="Кости скелета (вид спереди)"
+                            className="w-full h-auto object-contain rounded-lg border"
+                          />
+                          <p className="text-sm text-center text-muted-foreground mt-2">Вид спереди</p>
+                        </div>
+                        <div>
+                          <img 
+                            src={skeletonBackImg} 
+                            alt="Кости скелета (вид сзади)"
+                            className="w-full h-auto object-contain rounded-lg border"
+                          />
+                          <p className="text-sm text-center text-muted-foreground mt-2">Вид сзади</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <BookOpen className="h-5 w-5" />
-                    Теоретический материал
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {theme.content ? (
-                    <div className="prose prose-sm max-w-none dark:prose-invert">
-                      <div className="whitespace-pre-wrap leading-relaxed">{theme.content}</div>
-                    </div>
-                  ) : (
-                    <p className="text-muted-foreground">
-                      Содержание будет добавлено позже
-                    </p>
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Строение трубчатых костей</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <img 
+                        src={boneStructureImg} 
+                        alt="Строение трубчатых костей"
+                        className="w-full max-w-md mx-auto h-auto object-contain rounded-lg border mb-4"
+                      />
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <p>В длинных трубчатых костях есть:</p>
+                        <ul>
+                          <li><strong>Эпифизы</strong> — расширенные концы костей, содержат красный костный мозг</li>
+                          <li><strong>Диафиз</strong> — средняя часть кости</li>
+                          <li><strong>Метафиз</strong> — участок между эпифизом и диафизом</li>
+                          <li><strong>Компактное вещество</strong> — плотный наружный слой</li>
+                          <li><strong>Губчатое вещество</strong> — внутренний слой с сетью костных балок</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Система кровообращения</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <img 
+                        src={circulatorySystemImg} 
+                        alt="Строение системы кровообращения"
+                        className="w-full max-w-md mx-auto h-auto object-contain rounded-lg border mb-4"
+                      />
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <p><strong>Малый круг кровообращения:</strong> правый желудочек → легочные артерии → легкие → легочные вены → левое предсердие</p>
+                        <p><strong>Большой круг кровообращения:</strong> левый желудочек → аорта → органы и ткани → полые вены → правое предсердие</p>
+                        <ul>
+                          <li>Систолическое давление: 110-120 мм рт. ст.</li>
+                          <li>Диастолическое давление: 70-80 мм рт. ст.</li>
+                          <li>Частота сердечных сокращений: 60-80 уд/мин</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Дыхательная система</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <img 
+                        src={respiratorySystemImg} 
+                        alt="Строение дыхательной системы"
+                        className="w-full max-w-md mx-auto h-auto object-contain rounded-lg border mb-4"
+                      />
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <p>Путь воздуха: носовая полость → гортань → трахея → бронхи → легкие → альвеолы</p>
+                        <p><strong>Газообмен:</strong> в альвеолах через тонкую мембрану происходит диффузия O₂ в кровь и СО₂ из крови.</p>
+                        <p><strong>Кислородная емкость:</strong> 1 г гемоглобина связывает 1,36 мл О₂. При 15% гемоглобина в крови — 100 мл крови переносят до 21 мл О₂.</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Выделительная система</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <img 
+                        src={urinarySystemImg} 
+                        alt="Строение мочеполовой системы"
+                        className="w-full max-w-md mx-auto h-auto object-contain rounded-lg border mb-4"
+                      />
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <p>Система состоит из:</p>
+                        <ul>
+                          <li>Почки — фильтрация плазмы крови</li>
+                          <li>Мочеточники — транспорт мочи</li>
+                          <li>Мочевой пузырь — накопление мочи</li>
+                          <li>Мочеиспускательный канал — выведение мочи</li>
+                        </ul>
+                        <p><strong>Суточный диурез:</strong> 1,2–1,8 л у взрослого человека</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Центральная нервная система</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <img 
+                        src={brainImg} 
+                        alt="Строение головного мозга"
+                        className="w-full max-w-md mx-auto h-auto object-contain rounded-lg border mb-4"
+                      />
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <p><strong>ЦНС включает:</strong> головной и спинной мозг (серое и белое вещество)</p>
+                        <p><strong>Соматическая НС:</strong> иннервация скелетных мышц, кожи, связь с внешней средой</p>
+                        <p><strong>Вегетативная НС:</strong> иннервация внутренних органов, сосудов, желез, регуляция обменных процессов</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </>
+              ) : (
+                <>
+                  {themeImages[theme.id] && (
+                    <Card className="overflow-hidden">
+                      <img 
+                        src={themeImages[theme.id]} 
+                        alt={theme.name}
+                        className="w-full h-auto object-cover"
+                      />
+                    </Card>
                   )}
-                </CardContent>
-              </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <BookOpen className="h-5 w-5" />
+                        Теоретический материал
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      {theme.content ? (
+                        <div className="prose prose-sm max-w-none dark:prose-invert">
+                          <div className="whitespace-pre-wrap leading-relaxed">{theme.content}</div>
+                        </div>
+                      ) : (
+                        <p className="text-muted-foreground">
+                          Содержание будет добавлено позже
+                        </p>
+                      )}
+                    </CardContent>
+                  </Card>
+                </>
+              )}
 
               <Card>
                 <CardHeader>
