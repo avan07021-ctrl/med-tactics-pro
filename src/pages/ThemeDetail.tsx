@@ -12,7 +12,7 @@ import { ArrowLeft, BookOpen, CheckCircle, AlertCircle, Heart, Users, Activity, 
 import bgThemes from "@/assets/bg-themes.jpg";
 import anatomyImage from "@/assets/theme-anatomy.png";
 import skeletonImage from "@/assets/theme-skeleton.jpg";
-import jointsImage from "@/assets/theme-joints.jpg";
+import arterialPressurePoints from "@/assets/arterial-pressure-points.png";
 import musclesImage from "@/assets/theme-muscles.jpg";
 import skeletonFrontImg from "@/assets/anatomy-skeleton-front.jpg";
 import skeletonBackImg from "@/assets/anatomy-skeleton-back.jpg";
@@ -30,7 +30,7 @@ import kulakBarinTacticalZones from "@/assets/kulak-barin-tactical-zones.jpg";
 const themeImages: Record<number, string> = {
   1: anatomyImage,
   2: skeletonImage,
-  3: jointsImage,
+  3: arterialPressurePoints,
   4: musclesImage,
 };
 
