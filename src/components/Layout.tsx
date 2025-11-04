@@ -18,15 +18,30 @@ export const Layout = ({ children, user, isAdmin }: LayoutProps) => {
   const { toast } = useToast();
 
   const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        toast({
+          variant: "destructive",
+          title: "Ошибка",
+          description: "Не удалось выйти из системы",
+        });
+      } else {
+        toast({
+          title: "Выход выполнен",
+          description: "Вы успешно вышли из системы",
+        });
+        // Задержка для отображения toast перед редиректом
+        setTimeout(() => {
+          navigate("/auth");
+        }, 100);
+      }
+    } catch (err) {
       toast({
         variant: "destructive",
         title: "Ошибка",
-        description: "Не удалось выйти из системы",
+        description: "Произошла ошибка при выходе",
       });
-    } else {
-      navigate("/auth");
     }
   };
 
