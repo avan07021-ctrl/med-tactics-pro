@@ -84,13 +84,13 @@ export default function Tests() {
 
   useEffect(() => {
     const themeParam = searchParams.get("theme");
-    if (themeParam && themes.length > 0 && !selectedTheme) {
+    if (themeParam && themes.length > 0) {
       const themeId = parseInt(themeParam);
-      if (!isNaN(themeId)) {
+      if (!isNaN(themeId) && selectedTheme !== themeId) {
         startTest(themeId);
       }
     }
-  }, [searchParams, themes, selectedTheme]);
+  }, [searchParams, themes]);
 
   const startTest = async (themeId: number) => {
     const { data } = await supabase
