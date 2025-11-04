@@ -355,75 +355,241 @@ export default function ThemeDetail() {
                   <CardTitle>Ключевые моменты</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Accordion type="single" collapsible className="w-full">
-                    <AccordionItem value="item-1">
-                      <AccordionTrigger>
-                        <div className="flex items-center gap-2">
-                          <Heart className="h-4 w-4 text-red-500" />
-                          Основные принципы
+                  {theme.id === 18 ? (
+                    <div className="space-y-6">
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <h3 className="flex items-center gap-2 text-lg font-semibold">
+                          <Heart className="h-5 w-5 text-red-500" />
+                          Костная система
+                        </h3>
+                        <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                          <p><strong>Функции костной системы:</strong></p>
+                          <ul className="space-y-1">
+                            <li>Опорная — механическая основа тела</li>
+                            <li>Защитная — защита жизненно важных органов (череп, грудная клетка, позвоночник)</li>
+                            <li>Кроветворная — красный костный мозг производит клетки крови</li>
+                            <li>Двигательная — места прикрепления мышц, обеспечивающих движение</li>
+                            <li>Минеральная — депо кальция и фосфора</li>
+                          </ul>
+                          
+                          <p className="mt-3"><strong>Классификация костей:</strong></p>
+                          <ul className="space-y-1">
+                            <li><strong>Трубчатые кости</strong> — плечевая, бедренная, лучевая, локтевая кости. Содержат эпифизы (концы), диафиз (тело), метафиз (зона роста)</li>
+                            <li><strong>Губчатые кости</strong> — позвонки, кости запястья, предплюсны. Состоят из губчатого вещества, покрытого тонким слоем компактного</li>
+                            <li><strong>Плоские кости</strong> — кости черепа, лопатки, грудина. Защищают органы и служат для прикрепления мышц</li>
+                            <li><strong>Смешанные кости</strong> — кости основания черепа (височная, клиновидная)</li>
+                          </ul>
+                          
+                          <p className="mt-3"><strong>Строение трубчатой кости:</strong></p>
+                          <ul className="space-y-1">
+                            <li>Компактное вещество — плотный наружный слой, содержит остеоны (гаверсовы системы)</li>
+                            <li>Губчатое вещество — внутренний слой с трабекулами (костные балки), образующими сеть</li>
+                            <li>Красный костный мозг — находится в эпифизах, обеспечивает кроветворение</li>
+                            <li>Жёлтый костный мозг — расположен в диафизе, выполняет энергетическую функцию</li>
+                          </ul>
                         </div>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <ul className="list-disc list-inside space-y-2 text-sm">
-                          <li>Безопасность оказывающего помощь - приоритет №1</li>
-                          <li>Следование установленным алгоритмам действий</li>
-                          <li>Оценка тактической обстановки перед вмешательством</li>
-                          <li>Контроль критических параметров: кровотечение, дыхание</li>
-                        </ul>
-                      </AccordionContent>
-                    </AccordionItem>
+                      </div>
 
-                    <AccordionItem value="item-2">
-                      <AccordionTrigger>
-                        <div className="flex items-center gap-2">
-                          <Activity className="h-4 w-4 text-blue-500" />
-                          Последовательность действий
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <h3 className="flex items-center gap-2 text-lg font-semibold">
+                          <Activity className="h-5 w-5 text-blue-500" />
+                          Система кровообращения
+                        </h3>
+                        <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                          <p><strong>Строение сердца:</strong> четырёхкамерный орган с двумя предсердиями и двумя желудочками. Между камерами находятся клапаны (митральный, трикуспидальный, аортальный, легочный).</p>
+                          
+                          <p className="mt-3"><strong>Круги кровообращения:</strong></p>
+                          <ul className="space-y-2">
+                            <li><strong>Малый круг (легочный):</strong> правый желудочек → легочные артерии → капилляры легких (газообмен: O₂ поступает в кровь, CO₂ удаляется) → легочные вены → левое предсердие</li>
+                            <li><strong>Большой круг (системный):</strong> левый желудочек → аорта → артерии → капилляры органов и тканей (доставка O₂ и питательных веществ) → вены → полые вены → правое предсердие</li>
+                          </ul>
+                          
+                          <p className="mt-3"><strong>Физиологические показатели:</strong></p>
+                          <ul className="space-y-1">
+                            <li>Систолическое АД: 110–120 мм рт. ст.</li>
+                            <li>Диастолическое АД: 70–80 мм рт. ст.</li>
+                            <li>Частота сердечных сокращений: 60–80 уд/мин</li>
+                            <li>Ударный объем: 70–80 мл</li>
+                            <li>Минутный объем: 4,5–5,5 л</li>
+                          </ul>
+                          
+                          <p className="mt-3"><strong>Состав крови:</strong></p>
+                          <ul className="space-y-1">
+                            <li>Плазма (55%) — жидкая часть, содержит воду, белки, электролиты</li>
+                            <li>Форменные элементы (45%): эритроциты (транспорт O₂), лейкоциты (иммунная защита), тромбоциты (свёртывание)</li>
+                            <li>Группы крови: 0(I), A(II), B(III), AB(IV) по системе AB0 и резус-фактор (Rh+ или Rh−)</li>
+                          </ul>
                         </div>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <ul className="list-disc list-inside space-y-2 text-sm">
-                          <li>Первичная оценка обстановки и угроз</li>
-                          <li>Остановка критического кровотечения</li>
-                          <li>Обеспечение проходимости дыхательных путей</li>
-                          <li>Регулярная переоценка состояния пострадавшего</li>
-                        </ul>
-                      </AccordionContent>
-                    </AccordionItem>
+                      </div>
 
-                    <AccordionItem value="item-3">
-                      <AccordionTrigger>
-                        <div className="flex items-center gap-2">
-                          <AlertCircle className="h-4 w-4 text-amber-500" />
-                          Важные предостережения
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <h3 className="flex items-center gap-2 text-lg font-semibold">
+                          <AlertCircle className="h-5 w-5 text-amber-500" />
+                          Дыхательная система
+                        </h3>
+                        <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                          <p><strong>Воздухоносные пути:</strong> носовая полость (согревание, увлажнение, очистка воздуха) → гортань (голосообразование) → трахея → главные бронхи → долевые бронхи → сегментарные бронхи → бронхиолы → альвеолы</p>
+                          
+                          <p className="mt-3"><strong>Легкие:</strong> парный орган в грудной полости. Правое легкое — 3 доли, левое — 2 доли.</p>
+                          
+                          <p className="mt-3"><strong>Газообмен в альвеолах:</strong></p>
+                          <ul className="space-y-1">
+                            <li>Через тонкую альвеоло-капиллярную мембрану происходит диффузия газов</li>
+                            <li>Кислород (O₂) из альвеолярного воздуха переходит в кровь</li>
+                            <li>Углекислый газ (CO₂) из крови переходит в альвеолы и выдыхается</li>
+                          </ul>
+                          
+                          <p className="mt-3"><strong>Транспорт кислорода:</strong></p>
+                          <ul className="space-y-1">
+                            <li>1 г гемоглобина связывает 1,36 мл O₂</li>
+                            <li>При концентрации гемоглобина 15% в крови: 100 мл крови переносят до 21 мл O₂</li>
+                            <li>Насыщение артериальной крови кислородом (SpO₂): в норме 96–100%</li>
+                          </ul>
                         </div>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <ul className="list-disc list-inside space-y-2 text-sm">
-                          <li>Контроль времени при наложении жгута (не более 1 часа)</li>
-                          <li>Не использовать промедол при ранении головы</li>
-                          <li>Профилактика гипотермии (согревание раненого)</li>
-                          <li>Полный осмотр для выявления всех повреждений</li>
-                        </ul>
-                      </AccordionContent>
-                    </AccordionItem>
+                      </div>
 
-                    <AccordionItem value="item-4">
-                      <AccordionTrigger>
-                        <div className="flex items-center gap-2">
-                          <Shield className="h-4 w-4 text-green-500" />
-                          Критические ошибки
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <h3 className="flex items-center gap-2 text-lg font-semibold">
+                          <Shield className="h-5 w-5 text-green-500" />
+                          Выделительная система
+                        </h3>
+                        <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                          <p><strong>Компоненты системы:</strong></p>
+                          <ul className="space-y-1">
+                            <li><strong>Почки</strong> — парный орган, фильтрует кровь, образует мочу. Функциональная единица — нефрон (около 1 млн в каждой почке)</li>
+                            <li><strong>Мочеточники</strong> — транспортируют мочу из почек в мочевой пузырь</li>
+                            <li><strong>Мочевой пузырь</strong> — полый орган для накопления мочи (вместимость 300–500 мл)</li>
+                            <li><strong>Мочеиспускательный канал</strong> — выводит мочу наружу</li>
+                          </ul>
+                          
+                          <p className="mt-3"><strong>Функции почек:</strong></p>
+                          <ul className="space-y-1">
+                            <li>Фильтрация плазмы крови (первичная моча — 150–180 л/сут)</li>
+                            <li>Реабсорбция (обратное всасывание) полезных веществ</li>
+                            <li>Образование вторичной мочи (суточный диурез: 1,2–1,8 л у взрослого)</li>
+                            <li>Регуляция водно-электролитного баланса и кислотно-щелочного равновесия</li>
+                            <li>Выведение продуктов обмена (мочевина, креатинин, мочевая кислота)</li>
+                          </ul>
                         </div>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <ul className="list-disc list-inside space-y-2 text-sm">
-                          <li>Несвоевременное снятие жгута</li>
-                          <li>Игнорирование оценки тактической обстановки</li>
-                          <li>Введение обезболивающего до остановки кровотечения</li>
-                          <li>Неполный осмотр пострадавшего</li>
-                        </ul>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
+                      </div>
+
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <h3 className="flex items-center gap-2 text-lg font-semibold">
+                          <BookOpen className="h-5 w-5 text-purple-500" />
+                          Центральная нервная система
+                        </h3>
+                        <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+                          <p><strong>Состав ЦНС:</strong></p>
+                          <ul className="space-y-1">
+                            <li><strong>Головной мозг</strong> — высший центр регуляции всех функций организма</li>
+                            <li><strong>Спинной мозг</strong> — проводниковая и рефлекторная функция, расположен в позвоночном канале</li>
+                          </ul>
+                          
+                          <p className="mt-3"><strong>Отделы головного мозга:</strong></p>
+                          <ul className="space-y-1">
+                            <li>Продолговатый мозг — регуляция дыхания, сердечной деятельности, рефлексы (кашель, чихание, глотание)</li>
+                            <li>Мост — проводниковая функция</li>
+                            <li>Мозжечок — координация движений, равновесие, мышечный тонус</li>
+                            <li>Средний мозг — зрительные и слуховые рефлексы</li>
+                            <li>Промежуточный мозг (таламус, гипоталамус) — центр регуляции обмена веществ, эмоций</li>
+                            <li>Конечный мозг (кора больших полушарий) — высшая нервная деятельность, сознание, мышление</li>
+                          </ul>
+                          
+                          <p className="mt-3"><strong>Периферическая нервная система:</strong></p>
+                          <ul className="space-y-1">
+                            <li><strong>Соматическая НС</strong> — иннервация скелетных мышц, кожи, связь с внешней средой (произвольные движения)</li>
+                            <li><strong>Вегетативная НС</strong> — иннервация внутренних органов, сосудов, желёз (непроизвольная регуляция). Включает симпатическую (активация) и парасимпатическую (торможение) системы</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="prose prose-sm max-w-none dark:prose-invert">
+                        <h3 className="flex items-center gap-2 text-lg font-semibold">
+                          <Heart className="h-5 w-5 text-rose-500" />
+                          Применение знаний анатомии в первой помощи
+                        </h3>
+                        <div className="bg-gradient-to-r from-rose-500/10 to-rose-500/5 p-4 rounded-lg border-l-4 border-rose-500">
+                          <ul className="space-y-2">
+                            <li><strong>Понимание расположения органов</strong> позволяет правильно оценить характер травмы и возможные повреждения внутренних структур</li>
+                            <li><strong>Знание костей</strong> помогает определить места переломов и правильно наложить шины</li>
+                            <li><strong>Понимание кровообращения</strong> необходимо для правильной остановки кровотечений и выбора точек прижатия артерий</li>
+                            <li><strong>Знание дыхательной системы</strong> критично для обеспечения проходимости дыхательных путей и проведения искусственной вентиляции легких</li>
+                            <li><strong>Анатомия ЦНС</strong> важна для оценки неврологического статуса пострадавшего (сознание, рефлексы, чувствительность)</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <Accordion type="single" collapsible className="w-full">
+                      <AccordionItem value="item-1">
+                        <AccordionTrigger>
+                          <div className="flex items-center gap-2">
+                            <Heart className="h-4 w-4 text-red-500" />
+                            Основные принципы
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <ul className="list-disc list-inside space-y-2 text-sm">
+                            <li>Безопасность оказывающего помощь - приоритет №1</li>
+                            <li>Следование установленным алгоритмам действий</li>
+                            <li>Оценка тактической обстановки перед вмешательством</li>
+                            <li>Контроль критических параметров: кровотечение, дыхание</li>
+                          </ul>
+                        </AccordionContent>
+                      </AccordionItem>
+
+                      <AccordionItem value="item-2">
+                        <AccordionTrigger>
+                          <div className="flex items-center gap-2">
+                            <Activity className="h-4 w-4 text-blue-500" />
+                            Последовательность действий
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <ul className="list-disc list-inside space-y-2 text-sm">
+                            <li>Первичная оценка обстановки и угроз</li>
+                            <li>Остановка критического кровотечения</li>
+                            <li>Обеспечение проходимости дыхательных путей</li>
+                            <li>Регулярная переоценка состояния пострадавшего</li>
+                          </ul>
+                        </AccordionContent>
+                      </AccordionItem>
+
+                      <AccordionItem value="item-3">
+                        <AccordionTrigger>
+                          <div className="flex items-center gap-2">
+                            <AlertCircle className="h-4 w-4 text-amber-500" />
+                            Важные предостережения
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <ul className="list-disc list-inside space-y-2 text-sm">
+                            <li>Контроль времени при наложении жгута (не более 1 часа)</li>
+                            <li>Не использовать промедол при ранении головы</li>
+                            <li>Профилактика гипотермии (согревание раненого)</li>
+                            <li>Полный осмотр для выявления всех повреждений</li>
+                          </ul>
+                        </AccordionContent>
+                      </AccordionItem>
+
+                      <AccordionItem value="item-4">
+                        <AccordionTrigger>
+                          <div className="flex items-center gap-2">
+                            <Shield className="h-4 w-4 text-green-500" />
+                            Критические ошибки
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <ul className="list-disc list-inside space-y-2 text-sm">
+                            <li>Несвоевременное снятие жгута</li>
+                            <li>Игнорирование оценки тактической обстановки</li>
+                            <li>Введение обезболивающего до остановки кровотечения</li>
+                            <li>Неполный осмотр пострадавшего</li>
+                          </ul>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  )}
                 </CardContent>
               </Card>
             </TabsContent>
