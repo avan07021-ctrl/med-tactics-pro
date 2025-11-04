@@ -26,6 +26,11 @@ import kulakBarinEvacuation from "@/assets/kulak-barin-evacuation.jpg";
 import kulakBarinPreventableLosses from "@/assets/kulak-barin-preventable-losses.jpg";
 import kulakBarinOrder760 from "@/assets/kulak-barin-order-760.jpg";
 import kulakBarinTacticalZones from "@/assets/kulak-barin-tactical-zones.jpg";
+import kulakBarinAlgorithm from "@/assets/kulak-barin-algorithm.jpg";
+import kulakBarinMedhelp from "@/assets/kulak-barin-medhelp.jpg";
+import kulakBarinTourniquetHand from "@/assets/kulak-barin-tourniquet-hand.jpg";
+import kulakBarinTourniquetLeg from "@/assets/kulak-barin-tourniquet-leg.jpg";
+import kulakBarinMassiveBleeding from "@/assets/kulak-barin-massive-bleeding.jpg";
 import airwayTongueCollapse from "@/assets/airway-tongue-collapse.jpg";
 import airwayRecoveryPosition1 from "@/assets/airway-recovery-position-1.jpg";
 import airwayRecoveryPosition2 from "@/assets/airway-recovery-position-2.jpg";
@@ -1588,6 +1593,97 @@ export default function ThemeDetail() {
                                 <h4 className="font-medium mb-2">Дефибрилляция</h4>
                                 <img src={defibrillation} alt="Методика проведения электрической дефибрилляции" className="w-full h-auto rounded-lg" />
                                 <p className="text-sm text-muted-foreground mt-2">Правильное размещение электродов дефибриллятора</p>
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </div>
+                      )}
+
+                      {theme.id === 12 && (
+                        <div className="mt-8 space-y-6">
+                          <h3 className="text-xl font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации к теме
+                          </h3>
+                          
+                          <div className="space-y-4">
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Тактические зоны</h4>
+                                <img src={kulakBarinTacticalZones} alt="Условные тактические зоны оказания помощи" className="w-full h-auto rounded-lg" />
+                                <p className="text-sm text-muted-foreground mt-2">Красная, желтая и зеленая зоны</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Помощь в желтой зоне</h4>
+                                <img src={kulakBarinYellowZone} alt="Алгоритм помощи в желтой зоне" className="w-full h-auto rounded-lg" />
+                                <p className="text-sm text-muted-foreground mt-2">Алгоритм КУЛАК БАРИН</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Протокол MARCH PAWS</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Алгоритм действий</p>
+                                    <img src={kulakBarinAlgorithm} alt="Алгоритм MARCH PAWS" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Медицинская помощь</p>
+                                    <img src={kulakBarinMedhelp} alt="Порядок оказания медицинской помощи" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Наложение жгута</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Наложение на руку</p>
+                                    <img src={kulakBarinTourniquetHand} alt="Техника наложения жгута на руку" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <p className="text-sm text-muted-foreground mb-2">Наложение на ногу</p>
+                                    <img src={kulakBarinTourniquetLeg} alt="Техника наложения жгута на ногу" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                                <p className="text-sm text-muted-foreground mt-2">Накладывать максимально высоко: на руке под дельтовидную мышцу, на ноге под паховую складку</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Массивное кровотечение</h4>
+                                <img src={kulakBarinMassiveBleeding} alt="Остановка массивного кровотечения" className="w-full h-auto rounded-lg" />
+                                <p className="text-sm text-muted-foreground mt-2">Техника остановки кровотечения из крупных сосудов</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Эвакуация пострадавших</h4>
+                                <img src={kulakBarinEvacuation} alt="Способы эвакуации раненых" className="w-full h-auto rounded-lg" />
+                                <p className="text-sm text-muted-foreground mt-2">Безопасные способы перемещения пострадавших</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <h4 className="font-medium mb-2">Предотвратимые потери</h4>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                  <div>
+                                    <img src={kulakBarinPreventableLosses} alt="Предотвратимые потери в боевых действиях" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                  <div>
+                                    <img src={kulakBarinOrder760} alt="Приказ Минобороны №760" className="w-full h-auto rounded-lg" />
+                                  </div>
+                                </div>
+                                <p className="text-sm text-muted-foreground mt-2">Анализ предотвратимых потерь и нормативная база</p>
                               </CardContent>
                             </Card>
                           </div>
