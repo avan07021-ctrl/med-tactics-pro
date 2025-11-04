@@ -21,6 +21,11 @@ import respiratorySystemImg from "@/assets/anatomy-respiratory-system.jpg";
 import circulatorySystemImg from "@/assets/anatomy-circulatory-system.jpg";
 import urinarySystemImg from "@/assets/anatomy-urinary-system.jpg";
 import brainImg from "@/assets/anatomy-brain.jpg";
+import kulakBarinYellowZone from "@/assets/kulak-barin-yellow-zone.jpg";
+import kulakBarinEvacuation from "@/assets/kulak-barin-evacuation.jpg";
+import kulakBarinPreventableLosses from "@/assets/kulak-barin-preventable-losses.jpg";
+import kulakBarinOrder760 from "@/assets/kulak-barin-order-760.jpg";
+import kulakBarinTacticalZones from "@/assets/kulak-barin-tactical-zones.jpg";
 
 const themeImages: Record<number, string> = {
   1: anatomyImage,
@@ -366,6 +371,72 @@ export default function ThemeDetail() {
                         <p className="text-muted-foreground">
                           Содержание будет добавлено позже
                         </p>
+                      )}
+
+                      {theme.id === 2 && (
+                        <div className="mt-8 space-y-6">
+                          <h3 className="text-xl font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации к теме
+                          </h3>
+                          
+                          <div className="space-y-4">
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <img
+                                  src={kulakBarinPreventableLosses}
+                                  alt="Предотвратимые потери"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                                <p className="text-sm text-center text-muted-foreground mt-2">Предотвратимые потери</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <img
+                                  src={kulakBarinOrder760}
+                                  alt="Приказ Минобороны №760"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                                <p className="text-sm text-center text-muted-foreground mt-2">Приказ Минобороны №760</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <img
+                                  src={kulakBarinTacticalZones}
+                                  alt="Условные тактические зоны"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                                <p className="text-sm text-center text-muted-foreground mt-2">Условные тактические зоны</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <img
+                                  src={kulakBarinYellowZone}
+                                  alt="Помощь в желтой зоне"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                                <p className="text-sm text-center text-muted-foreground mt-2">Помощь в желтой зоне - алгоритм КУЛАК БАРИН</p>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="overflow-hidden">
+                              <CardContent className="p-4">
+                                <img
+                                  src={kulakBarinEvacuation}
+                                  alt="Эвакуация раненых"
+                                  className="w-full h-auto rounded-lg"
+                                />
+                                <p className="text-sm text-center text-muted-foreground mt-2">Эвакуация раненых</p>
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </div>
                       )}
 
                       {theme.id === 2 && images.length > 0 && (
