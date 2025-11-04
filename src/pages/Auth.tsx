@@ -26,7 +26,7 @@ export default function Auth() {
       (event, session) => {
         setSession(session);
         if (session) {
-          navigate("/");
+          navigate("/themes");
         }
       }
     );
@@ -35,7 +35,7 @@ export default function Auth() {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (session) {
-        navigate("/");
+        navigate("/themes");
       }
     });
 
@@ -75,7 +75,7 @@ export default function Auth() {
       email,
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}/`,
+        emailRedirectTo: `${window.location.origin}/themes`,
         data: {
           full_name: fullName,
         }

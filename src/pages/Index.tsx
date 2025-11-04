@@ -58,6 +58,12 @@ const Index = () => {
     return () => subscription.unsubscribe();
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      navigate("/themes");
+    }
+  }, [user, navigate]);
+
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setUser(null);
