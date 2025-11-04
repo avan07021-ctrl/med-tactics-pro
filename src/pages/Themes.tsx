@@ -6,7 +6,7 @@ import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { BookOpen, Clock } from "lucide-react";
+import { BookOpen, Clock, FileImage, FileText, Video } from "lucide-react";
 import bgThemes from "@/assets/bg-themes.jpg";
 
 export default function Themes() {
@@ -15,6 +15,7 @@ export default function Themes() {
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const [themes, setThemes] = useState<any[]>([]);
+  const [themeMedia, setThemeMedia] = useState<Record<number, any[]>>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -36,6 +37,23 @@ export default function Themes() {
 
       if (!error && data) {
         setThemes(data);
+        
+        // Fetch media for all themes
+        const { data: mediaData } = await supabase
+          .from("theme_media")
+          .select("*")
+          .order("created_at", { ascending: false });
+        
+        if (mediaData) {
+          const mediaByTheme = mediaData.reduce((acc: Record<number, any[]>, media) => {
+            if (!acc[media.theme_id]) {
+              acc[media.theme_id] = [];
+            }
+            acc[media.theme_id].push(media);
+            return acc;
+          }, {});
+          setThemeMedia(mediaByTheme);
+        }
       }
       setLoading(false);
     };
@@ -141,11 +159,35 @@ export default function Themes() {
                   <p className="text-sm text-muted-foreground line-clamp-3">
                     {theme.description || theme.content}
                   </p>
-                  {theme.format && (
-                    <Badge variant="secondary" className="mt-4">
-                      {theme.format}
-                    </Badge>
-                  )}
+                  <div className="flex items-center gap-2 mt-4">
+                    {theme.format && (
+                      <Badge variant="secondary">
+                        {theme.format}
+                      </Badge>
+                    )}
+                    {themeMedia[theme.id] && themeMedia[theme.id].length > 0 && (
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        {themeMedia[theme.id].some(m => m.media_type === 'image') && (
+                          <div className="flex items-center gap-1">
+                            <FileImage className="h-3 w-3" />
+                            <span>{themeMedia[theme.id].filter(m => m.media_type === 'image').length}</span>
+                          </div>
+                        )}
+                        {themeMedia[theme.id].some(m => m.media_type === 'video') && (
+                          <div className="flex items-center gap-1">
+                            <Video className="h-3 w-3" />
+                            <span>{themeMedia[theme.id].filter(m => m.media_type === 'video').length}</span>
+                          </div>
+                        )}
+                        {themeMedia[theme.id].some(m => m.media_type === 'document') && (
+                          <div className="flex items-center gap-1">
+                            <FileText className="h-3 w-3" />
+                            <span>{themeMedia[theme.id].filter(m => m.media_type === 'document').length}</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             ))}
