@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Cross, LogOut, BookOpen, ClipboardList, Settings } from "lucide-react";
+import { Cross, LogOut, BookOpen, ClipboardList, Settings, BarChart3 } from "lucide-react";
 import avangardLogo from "@/assets/avangard-logo.jpg";
 
 interface LayoutProps {
@@ -54,6 +54,12 @@ export const Layout = ({ children, user, isAdmin }: LayoutProps) => {
                   <Button variant="ghost" size="sm">
                     <ClipboardList className="mr-2 h-4 w-4" />
                     Тесты
+                  </Button>
+                </Link>
+                <Link to="/statistics">
+                  <Button variant="ghost" size="sm">
+                    <BarChart3 className="mr-2 h-4 w-4" />
+                    Статистика
                   </Button>
                 </Link>
                 {isAdmin && (

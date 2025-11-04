@@ -9,6 +9,7 @@ import Themes from "./pages/Themes";
 import ThemeDetail from "./pages/ThemeDetail";
 import Tests from "./pages/Tests";
 import Admin from "./pages/Admin";
+import Statistics from "./pages/Statistics";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/themes/:id" element={<ThemeDetail />} />
           <Route path="/tests" element={<Tests />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/statistics" element={<Statistics />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
