@@ -140,6 +140,15 @@ export default function ThemeDetail() {
     );
   }
 
+  const getPublicUrl = (filePath: string) => {
+    const { data } = supabase.storage
+      .from('theme-media')
+      .getPublicUrl(filePath);
+    return data.publicUrl;
+  };
+
+  const images = themeMedia.filter(m => m.media_type === 'image');
+
   return (
     <Layout user={user} isAdmin={profile?.role === "admin"}>
       <div 
@@ -357,6 +366,32 @@ export default function ThemeDetail() {
                         <p className="text-muted-foreground">
                           Содержание будет добавлено позже
                         </p>
+                      )}
+
+                      {theme.id === 2 && images.length > 0 && (
+                        <div className="mt-8 space-y-4">
+                          <h3 className="text-lg font-semibold flex items-center gap-2">
+                            <FileImage className="h-5 w-5" />
+                            Иллюстрации
+                          </h3>
+                          <div className="grid gap-4">
+                            {images.map((media) => (
+                              <Card key={media.id} className="overflow-hidden">
+                                <CardContent className="p-4">
+                                  <div className="flex flex-col gap-2">
+                                    <h4 className="font-medium text-sm">{media.file_name}</h4>
+                                    <img
+                                      src={getPublicUrl(media.file_path)}
+                                      alt={media.file_name}
+                                      className="w-full h-auto rounded-lg border"
+                                      loading="lazy"
+                                    />
+                                  </div>
+                                </CardContent>
+                              </Card>
+                            ))}
+                          </div>
+                        </div>
                       )}
                     </CardContent>
                   </Card>
