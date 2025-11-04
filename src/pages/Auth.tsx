@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import avangardLogo from "@/assets/avangard-logo.jpg";
+import medicalHero from "@/assets/medical-hero.jpg";
 
 export default function Auth() {
   const navigate = useNavigate();
@@ -80,8 +81,12 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted p-4">
-      <Card className="w-full max-w-md animate-scale-in">
+    <div 
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted p-4 bg-cover bg-center relative"
+      style={{ backgroundImage: `url(${medicalHero})` }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/95 to-background/90" />
+      <Card className="w-full max-w-md animate-scale-in relative z-10 backdrop-blur-sm bg-card/95">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <img src={avangardLogo} alt="ОСЛ Авангард" className="h-20 w-20 object-contain hover-scale" />

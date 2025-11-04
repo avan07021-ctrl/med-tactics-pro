@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { Plus, Pencil, Trash2, Upload } from "lucide-react";
 import testData from "@/data/test_base.json";
+import patternBackground from "@/assets/pattern-background.jpg";
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -151,7 +152,12 @@ export default function Admin() {
 
   return (
     <Layout user={user} isAdmin={true}>
-      <div className="max-w-6xl mx-auto">
+      <div 
+        className="max-w-6xl mx-auto bg-cover bg-center rounded-lg p-8 relative"
+        style={{ backgroundImage: `url(${patternBackground})` }}
+      >
+        <div className="absolute inset-0 bg-background/85 rounded-lg" />
+        <div className="relative z-10">
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold mb-2">Панель администратора</h1>
@@ -241,6 +247,7 @@ export default function Admin() {
             </div>
           </TabsContent>
         </Tabs>
+      </div>
       </div>
     </Layout>
   );

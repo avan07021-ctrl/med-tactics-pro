@@ -4,13 +4,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Cross, BookOpen, ClipboardList, Users } from "lucide-react";
 import avangardLogo from "@/assets/avangard-logo.jpg";
+import heroBackground from "@/assets/hero-background.jpg";
 
 const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
-      <div className="container mx-auto px-4 py-16">
+    <div 
+      className="min-h-screen bg-gradient-to-br from-background via-background to-muted bg-cover bg-center bg-fixed relative"
+      style={{ backgroundImage: `url(${heroBackground})` }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/95" />
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="text-center mb-16 animate-fade-in">
           <div className="flex items-center justify-center gap-4 mb-6">
             <img src={avangardLogo} alt="ОСЛ Авангард" className="h-32 w-32 object-contain hover-scale" />

@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BookOpen, Clock } from "lucide-react";
+import patternBackground from "@/assets/pattern-background.jpg";
 
 export default function Themes() {
   const navigate = useNavigate();
@@ -58,7 +59,12 @@ export default function Themes() {
 
   return (
     <Layout user={user} isAdmin={profile?.role === "admin"}>
-      <div className="max-w-6xl mx-auto">
+      <div 
+        className="max-w-6xl mx-auto bg-cover bg-center rounded-lg p-8 relative"
+        style={{ backgroundImage: `url(${patternBackground})` }}
+      >
+        <div className="absolute inset-0 bg-background/80 rounded-lg" />
+        <div className="relative z-10">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Перечень тем</h1>
           <p className="text-muted-foreground">
@@ -124,6 +130,7 @@ export default function Themes() {
             ))}
           </div>
         )}
+        </div>
       </div>
     </Layout>
   );

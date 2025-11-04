@@ -9,6 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { ClipboardCheck, Info, Play } from "lucide-react";
+import patternBackground from "@/assets/pattern-background.jpg";
 
 export default function Tests() {
   const navigate = useNavigate();
@@ -115,7 +116,12 @@ export default function Tests() {
   if (!selectedTheme) {
     return (
       <Layout user={user} isAdmin={profile?.role === "admin"}>
-        <div className="max-w-4xl mx-auto">
+        <div 
+          className="max-w-4xl mx-auto bg-cover bg-center rounded-lg p-8 relative"
+          style={{ backgroundImage: `url(${patternBackground})` }}
+        >
+          <div className="absolute inset-0 bg-background/80 rounded-lg" />
+          <div className="relative z-10">
           <div className="mb-8 animate-fade-in">
             <h1 className="text-3xl font-bold mb-2">Тестирование</h1>
             <p className="text-muted-foreground">
@@ -144,6 +150,7 @@ export default function Tests() {
               </Card>
             ))}
           </div>
+        </div>
         </div>
       </Layout>
     );
